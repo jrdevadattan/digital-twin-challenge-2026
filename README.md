@@ -6,7 +6,7 @@ A clinician-facing Type 2 diabetes digital-twin research workspace with timestam
 
 Team: **dev**. Author: **J R Deva Dattan**. College: **Army Institute of Technology, Pune**.
 
-Registration is complete for solo Team dev. The repository remains private while the submission package is completed. The PPTX and architecture PDF are available under `artifacts/submission/`. The actual 20:00 walkthrough, its unlisted YouTube link and final platform submission are still pending.
+Registration is complete for solo Team dev. The repository remains private while the submission package is completed. The presentation and architecture files are grouped in [`dev_Army Institute of Technology/`](dev_Army%20Institute%20of%20Technology/README.md), with canonical copies under `artifacts/submission/`. The actual 20:00 walkthrough, its unlisted YouTube link and final platform submission are still pending.
 
 The submission form requires a 15–20-minute video, while the public listing specifies at least 20 minutes. The recording target is exactly 20:00; its verified YouTube link will be added here before submission.
 
