@@ -9,3 +9,7 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 Other dependency licenses are distributed in their installed packages. This notice does not relicense clinical datasets or grant rights in any future benchmark source.
+
+## Presentation template
+
+The presentation adapts SlidesCarnival’s Dercetus / Minimal Medical template under CC BY 4.0. Its attribution, source and modification details are in [TEMPLATE_ATTRIBUTION.md](submission/TEMPLATE_ATTRIBUTION.md). The MIT license for original GlucoTwin code does not cover this template or its fonts. The unmodified source template is excluded from the repository.

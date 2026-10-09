@@ -4,11 +4,12 @@ GlucoTwin, Team dev. J R Deva Dattan, Army Institute of Technology, Pune.
 
 ## Files
 
-- `../../artifacts/submission/GlucoTwin-presentation.pptx`: 12-slide editable presentation, with source notes and editable evidence charts.
-- An optional PDF version of the slides is prepared locally; its repository upload is pending. The PPTX above satisfies the presentation-format requirement.
+- `../../artifacts/submission/GlucoTwin-presentation.pptx`: 12-slide editable presentation adapted from the downloaded SlidesCarnival Dercetus / Minimal Medical template, with source notes and editable evidence charts.
+- `../../artifacts/submission/GlucoTwin-presentation.pdf`: PDF export of the same adapted presentation.
 - `../../artifacts/submission/GlucoTwin-architecture.pdf`: three-page architecture, pipeline, and safety-boundary document.
 - `walkthrough-runbook.md`: timed 20-minute narration and live-demo plan. It is not a video.
 - `slide-notes.md`: source references accompanying the deck.
+- `TEMPLATE_ATTRIBUTION.md`: official template source, license, source checksum, and layout mapping.
 
 ## Project description
 
