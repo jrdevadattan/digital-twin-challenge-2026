@@ -27,3 +27,14 @@
 - Clinical validity, deployment reliability, prospective performance and real EHR integration are not established by these checks.
 
 Screenshots are in `artifacts/screenshots/` and show fictional patients only.
+
+## Responsive correction, 9 October
+
+The first mobile layout used undersized text. It was replaced after user feedback.
+
+- Actual iframe viewports at 320, 375 and 390 CSS pixels now use full-size horizontally scrollable patient cards, stacked metric rows, 14px forecast copy, 16px select controls and 44px playback/slider targets.
+- The event estimate appears after the metrics and before the chart; input quality remains visible.
+- Chart viewBox width follows its measured container: 247/302/317px respectively, matching rendered width exactly. Axis text is actually 12px, not a larger SVG font scaled down. Narrow charts use four quarter-hour-aligned ticks and provide a numeric textual baseline/range summary.
+- Overview, evidence and provenance panels fit each small viewport; 768px and 1024px layouts were also checked with the stale-feed state.
+- Patient worklist and tab bar use explicitly bounded horizontal scrolling. The document itself has no horizontal overflow.
+- Critical units, stale policy, uncertainty text and research-only disclosure remain visible at mobile sizes.

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import model from "../public/model.json";
 import evidence from "../public/model-evidence.json";
 import realEvidence from "../public/model-real-evidence.json";
@@ -56,7 +56,18 @@ function Sparkline({ state }: { state: TwinState }) {
   );
 }
 function Chart({ state }: { state: TwinState }) {
-  const W = 820,
+  const chartRef = useRef<HTMLDivElement>(null);
+  const [chartWidth, setChartWidth] = useState(640);
+  useEffect(() => {
+    const node = chartRef.current;
+    if (!node) return;
+    const observer = new ResizeObserver(([entry]) =>
+      setChartWidth(Math.max(240, entry.contentRect.width)),
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+  const W = chartWidth,
     H = 300,
     left = 48,
     right = 20,
@@ -72,7 +83,7 @@ function Chart({ state }: { state: TwinState }) {
   const points = (arr: { minute: number; value: number }[]) =>
     arr.map((r) => `${x(r.minute)},${y(r.value)}`).join(" ");
   return (
-    <div className="chart-wrap">
+    <div className="chart-wrap" ref={chartRef}>
       <svg
         viewBox={`0 0 ${W} ${H}`}
         role="img"
@@ -120,7 +131,7 @@ function Chart({ state }: { state: TwinState }) {
           textAnchor="end"
           className="threshold-label"
         >
-          Above-range threshold · 180
+          {W < 500 ? "Above range · 180" : "Above-range threshold · 180"}
         </text>
         {forecast.length > 0 && (
           <>
@@ -188,8 +199,10 @@ function Chart({ state }: { state: TwinState }) {
           </>
         )}
         {Array.from(
-          { length: 7 },
-          (_, i) => start + ((end - start) * i) / 6,
+          { length: W < 500 ? 4 : 7 },
+          (_, i) =>
+            start +
+            Math.round(((end - start) * i) / (W < 500 ? 3 : 6) / 15) * 15,
         ).map((m) => (
           <text
             key={m}
@@ -202,6 +215,11 @@ function Chart({ state }: { state: TwinState }) {
           </text>
         ))}
       </svg>
+      <p className="chart-summary">
+        {state.forecast.length > 0
+          ? `At ${clockLabel(state.minute + 120)} IST, the separate persistence baseline is ${state.current?.toFixed(1)} mg/dL; the descriptive synthetic band is ${state.forecast.at(-1)!.low.toFixed(1)} to ${state.forecast.at(-1)!.high.toFixed(1)} mg/dL.`
+          : state.reason}
+      </p>
       <div className="chart-legend">
         <span>
           <i className="line-key" />
@@ -436,7 +454,10 @@ function App() {
               </div>
             </div>
             <Tabs value={tab} onValueChange={setTab}>
-              <TabsList className="workspace-tabs">
+              <TabsList
+                className="workspace-tabs"
+                aria-label="Patient workspace sections"
+              >
                 <TabsTrigger value="overview">Twin overview</TabsTrigger>
                 <TabsTrigger value="history">Review history</TabsTrigger>
                 <TabsTrigger value="evidence">Model evidence</TabsTrigger>
@@ -990,6 +1011,7 @@ function App() {
             </span>
             <input
               aria-label="Replay time"
+              aria-valuetext={`${state.now} IST`}
               type="range"
               min={0}
               max={maxStep}

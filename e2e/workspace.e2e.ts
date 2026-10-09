@@ -27,9 +27,19 @@ test("replay, quality gates and session notes", async ({ page }) => {
   ).toBeVisible();
 });
 test("responsive layout stays within viewport", async ({ page }) => {
-  for (const width of [390, 768, 1440]) {
+  for (const width of [320, 375, 390, 768, 1024, 1440]) {
     await page.setViewportSize({ width, height: 1000 });
     await page.goto("/");
+    await expect(page.getByRole('heading',{name:'Input quality',exact:true})).toBeVisible();
+    await expect(page.getByText('IST · mg/dL',{exact:true})).toBeVisible();
+    for(const button of await page.locator('.playback-controls button').all()){
+      const bounds=await button.boundingBox(); expect(bounds!.height).toBeGreaterThanOrEqual(44); expect(bounds!.width).toBeGreaterThanOrEqual(44);
+    }
+    if(width<=650){
+      expect(await page.locator('.forecast-card > p').evaluate(el=>parseFloat(getComputedStyle(el).fontSize))).toBeGreaterThanOrEqual(14);
+      const chart=await page.locator('.chart-wrap svg').evaluate(el=>({actual:el.getBoundingClientRect().width,viewBox:parseFloat(el.getAttribute('viewBox')!.split(' ')[2])}));
+      expect(Math.abs(chart.actual-chart.viewBox)).toBeLessThan(1);
+    }
     expect(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,

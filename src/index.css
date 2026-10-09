@@ -1650,3 +1650,786 @@ pre {
   font-size: 8px;
   color: #557366;
 }
+/* Readability and touch-target pass. Chart viewBox follows its actual container. */
+.axis {
+  font-size: 12px;
+  fill: #65715e;
+}
+.threshold-label {
+  font-size: 11px;
+  fill: #796039;
+}
+.now-label {
+  font-size: 10px;
+  fill: #355940;
+}
+.chart-legend {
+  font-size: 11px;
+  line-height: 1.7;
+}
+.timezone {
+  font-size: 11px !important;
+}
+.chart-footnote,
+.research-caution,
+.safety-footer {
+  font-size: 11px;
+  color: #58694f;
+}
+.inline-notice {
+  color: #536849;
+}
+.workspace-tabs [data-slot="tabs-trigger"] {
+  font-size: 12px !important;
+}
+.metric-label {
+  font-size: 11px;
+}
+.metric-detail {
+  font-size: 10px;
+}
+.patient-identity strong {
+  font-size: 12px;
+}
+.patient-identity small,
+.patient-status,
+.list-subtitle {
+  font-size: 10px;
+}
+.context-grid strong {
+  font-size: 11px;
+}
+.context-grid p,
+.context-grid small {
+  font-size: 10px;
+}
+.card-heading p {
+  font-size: 11px;
+}
+.forecast-card > p {
+  font-size: 12px;
+}
+.forecast-card dl {
+  font-size: 11px;
+}
+.forecast-eyebrow {
+  font-size: 10px;
+}
+.estimate-number > small {
+  font-size: 11px;
+}
+.quality-summary span,
+.quality-card > p {
+  font-size: 11px;
+}
+.quality-heading h3 {
+  font-size: 13px;
+}
+.text-link {
+  font-size: 12px;
+  min-height: 44px;
+}
+.review-button {
+  font-size: 12px !important;
+  height: 44px !important;
+}
+.timeline-control input {
+  height: 44px;
+  background: transparent;
+}
+.replay-label strong {
+  font-size: 12px;
+}
+.replay-label span:not(.replay-icon) {
+  font-size: 10px;
+}
+.playback-controls button {
+  min-height: 44px !important;
+  min-width: 44px;
+  font-size: 12px !important;
+}
+.playback-controls select,
+.scenario-select {
+  height: 44px;
+  font-size: 12px;
+}
+.playback-controls button svg {
+  width: 16px;
+}
+.timeline-control > span {
+  font-size: 14px;
+}
+.timeline-control small {
+  font-size: 11px;
+}
+summary {
+  padding: 12px 0;
+  min-height: 44px;
+}
+.replay-bar {
+  flex-wrap: wrap;
+}
+.safety-footer {
+  line-height: 1.8;
+}
+.safety-footer > span {
+  font-size: 10px;
+}
+@media (max-width: 900px) {
+  .quality-card {
+    display: flex !important;
+  }
+  .quality-summary span,
+  .quality-card > p {
+    font-size: 13px;
+  }
+  .quality-heading h3 {
+    font-size: 15px;
+  }
+  .quality-heading [data-slot="badge"] {
+    font-size: 11px;
+  }
+  .forecast-card > p,
+  .forecast-card dl,
+  .research-caution {
+    font-size: 13px;
+  }
+  .forecast-card h3 {
+    font-size: 23px;
+  }
+  .forecast-card dl {
+    flex-direction: column;
+  }
+  .context-grid strong {
+    font-size: 13px;
+  }
+  .context-grid p,
+  .context-grid small {
+    font-size: 12px;
+  }
+  .chart-legend,
+  .chart-footnote {
+    font-size: 12px;
+  }
+  .timezone {
+    display: flex !important;
+    font-size: 12px !important;
+  }
+  .card-heading p {
+    font-size: 12px;
+  }
+  .metric-detail {
+    font-size: 11px;
+    line-height: 1.5;
+  }
+  .metric-detail span {
+    display: inline;
+  }
+  .metric-grid {
+    grid-template-columns: 1fr;
+  }
+  .metric-card {
+    display: grid !important;
+    grid-template-columns: 1fr auto;
+    gap: 7px !important;
+    padding: 16px !important;
+  }
+  .metric-label {
+    grid-column: 1;
+    font-size: 13px;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+  .metric-label svg {
+    display: block;
+  }
+  .metric-number {
+    grid-column: 2;
+    grid-row: 1/3;
+    margin: 0;
+    font-size: 28px;
+    align-self: center;
+  }
+  .metric-number span {
+    font-size: 12px;
+    display: inline;
+    margin-left: 5px;
+  }
+  .metric-detail {
+    grid-column: 1;
+    margin: 0;
+    white-space: normal;
+  }
+  .workspace-tabs {
+    height: 48px !important;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 24px;
+  }
+  .workspace-tabs [data-slot="tabs-trigger"] {
+    height: 48px;
+    font-size: 13px !important;
+    min-width: max-content;
+  }
+  .patient-header {
+    height: auto;
+    min-height: 86px;
+  }
+  .patient-header p {
+    font-size: 12px;
+    line-height: 1.7;
+  }
+  .patient-title [data-slot="badge"] {
+    font-size: 10px;
+  }
+  .patient-title {
+    gap: 8px;
+  }
+  .patient-title h2 {
+    font-size: 23px;
+  }
+  .detail-panel label,
+  .detail-panel > p,
+  .detail-panel textarea,
+  .evidence-cards p,
+  .provenance-flow p,
+  .note-item p {
+    font-size: 14px !important;
+  }
+  .evidence-cards h4,
+  .provenance-flow h4 {
+    font-size: 16px;
+  }
+  .evidence-cards [data-slot="badge"] {
+    font-size: 11px;
+  }
+  .inline-notice {
+    font-size: 13px;
+  }
+  .detail-panel > button {
+    font-size: 14px;
+    min-height: 44px;
+  }
+  .source-links {
+    font-size: 13px;
+    line-height: 1.8;
+  }
+  .detail-panel > h4 {
+    font-size: 15px;
+  }
+  .real-evidence p {
+    font-size: 13px;
+  }
+  .real-evidence [data-slot="badge"] {
+    font-size: 11px;
+    white-space: normal;
+  }
+  .real-evidence {
+    padding: 16px;
+  }
+  .real-evidence h4 {
+    font-size: 17px;
+  }
+  pre {
+    font-size: 12px;
+  }
+  .context-card .card-heading {
+    align-items: flex-start;
+  }
+  .card-heading h3 {
+    font-size: 16px;
+  }
+  .card-heading [data-slot="badge"] {
+    font-size: 10px;
+  }
+  .forecast-card dl > div {
+    font-size: 13px;
+  }
+  .forecast-card .review-button {
+    max-width: none;
+  }
+  .safety-footer {
+    font-size: 12px;
+  }
+  .replay-label span:not(.replay-icon) {
+    font-size: 12px;
+  }
+  .scenario-select,
+  .playback-controls select {
+    font-size: 14px;
+  }
+  .playback-controls button {
+    font-size: 14px !important;
+  }
+}
+@media (max-width: 650px) {
+  .rail {
+    display: none;
+  }
+  .workspace {
+    margin-left: 0;
+    width: 100%;
+  }
+  .topbar {
+    height: 72px;
+    padding: 0 16px;
+  }
+  .brand {
+    font-size: 27px;
+  }
+  .topbar-right {
+    gap: 0;
+  }
+  .synthetic-badge {
+    font-size: 10px !important;
+    padding: 6px 8px !important;
+    white-space: normal;
+    max-width: 150px;
+  }
+  .page-heading {
+    padding: 25px 16px;
+  }
+  .page-heading h1 {
+    font-size: 28px;
+    max-width: none;
+  }
+  .page-heading p {
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: none;
+  }
+  .eyebrow {
+    font-size: 11px;
+  }
+  .content-layout {
+    padding: 0 16px 20px;
+  }
+  .list-heading h2 {
+    font-size: 15px;
+  }
+  .list-heading h2 span {
+    font-size: 11px;
+  }
+  .list-subtitle {
+    display: block;
+    font-size: 12px;
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+  .patient-cards {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    overflow-x: auto;
+    padding: 3px 3px 14px;
+    margin-bottom: 18px;
+    scroll-snap-type: x mandatory;
+  }
+  .patient-card {
+    flex: 0 0 240px;
+    min-width: 240px;
+    padding: 16px;
+    scroll-snap-align: start;
+  }
+  .patient-row .avatar {
+    width: 36px;
+    height: 36px;
+    font-size: 12px;
+    border-radius: 10px;
+  }
+  .patient-row {
+    gap: 10px;
+  }
+  .patient-identity strong {
+    font-size: 14px;
+  }
+  .patient-identity small {
+    font-size: 12px;
+  }
+  .patient-value > strong {
+    font-size: 27px;
+  }
+  .patient-value small {
+    font-size: 12px;
+  }
+  .patient-status {
+    font-size: 12px;
+    margin-top: 10px;
+  }
+  .sparkline {
+    width: 80px;
+    height: 32px;
+  }
+  .patient-header {
+    gap: 12px;
+    padding-top: 4px;
+    margin-bottom: 12px;
+  }
+  .patient-title {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .patient-title h2 {
+    font-size: 24px;
+  }
+  .patient-header p {
+    font-size: 12px;
+    max-width: none;
+    line-height: 1.7;
+  }
+  .patient-title [data-slot="badge"] {
+    font-size: 11px;
+  }
+  .patient-header p span {
+    padding: 0 4px;
+  }
+  .avatar.large {
+    width: 46px;
+    height: 46px;
+    font-size: 14px;
+  }
+  .workspace-tabs {
+    gap: 22px;
+    margin-bottom: 20px;
+  }
+  .workspace-tabs [data-slot="tabs-trigger"] {
+    font-size: 14px !important;
+    height: 48px !important;
+    padding-bottom: 10px !important;
+  }
+  .metric-grid {
+    gap: 12px;
+  }
+  .metric-card {
+    padding: 17px !important;
+  }
+  .metric-number {
+    font-size: 30px;
+  }
+  .metric-number span {
+    font-size: 12px;
+    display: block;
+    text-align: right;
+    margin: 6px 0 0;
+  }
+  .metric-label {
+    font-size: 14px;
+  }
+  .metric-detail {
+    font-size: 12px;
+    gap: 5px;
+    line-height: 1.6;
+  }
+  .metric-detail svg {
+    width: 14px;
+    height: 14px;
+  }
+  .metric-detail span {
+    display: inline;
+  }
+  .chart-card {
+    padding: 18px 12px !important;
+  }
+  .chart-card .card-heading {
+    flex-direction: column;
+    gap: 9px;
+    padding: 0 4px;
+  }
+  .card-heading h3 {
+    font-size: 17px;
+  }
+  .card-heading p {
+    font-size: 13px;
+    max-width: none;
+  }
+  .card-heading [data-slot="badge"] {
+    font-size: 11px;
+    padding: 4px 7px;
+  }
+  .axis {
+    font-size: 12px;
+  }
+  .threshold-label {
+    font-size: 11px;
+  }
+  .chart-legend {
+    font-size: 12px;
+    gap: 8px 14px;
+  }
+  .chart-legend span {
+    min-height: 22px;
+  }
+  .timezone {
+    margin-left: 0;
+    display: flex !important;
+    font-size: 12px !important;
+  }
+  .chart-footnote {
+    font-size: 12px;
+    align-items: flex-start;
+    line-height: 1.65;
+  }
+  .chart-footnote svg {
+    margin-top: 3px;
+  }
+  .context-card {
+    padding: 18px !important;
+  }
+  .context-grid {
+    gap: 18px;
+  }
+  .context-grid strong {
+    font-size: 14px;
+  }
+  .context-grid p,
+  .context-grid small {
+    font-size: 12px;
+    line-height: 1.7;
+  }
+  .forecast-card {
+    padding: 22px !important;
+  }
+  .forecast-eyebrow {
+    font-size: 11px;
+  }
+  .forecast-card h3 {
+    font-size: 25px;
+    line-height: 1.3;
+  }
+  .forecast-card > p {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .forecast-card dl {
+    font-size: 13px;
+    gap: 14px;
+  }
+  .forecast-card dl > div {
+    font-size: 13px;
+  }
+  .estimate-number {
+    font-size: 48px;
+  }
+  .estimate-number > small {
+    font-size: 13px;
+  }
+  .research-caution {
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .review-button {
+    font-size: 14px !important;
+    min-height: 46px !important;
+  }
+  .quality-card {
+    padding: 20px !important;
+  }
+  .quality-heading h3 {
+    font-size: 16px;
+  }
+  .quality-summary strong {
+    font-size: 20px;
+  }
+  .quality-summary span {
+    font-size: 13px;
+  }
+  .quality-card > p {
+    font-size: 13px;
+  }
+  .text-link {
+    font-size: 14px;
+    min-height: 44px;
+  }
+  .replay-bar {
+    margin: 0 16px;
+    padding: 18px;
+    gap: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .replay-label {
+    width: 100%;
+  }
+  .replay-label strong {
+    font-size: 16px;
+  }
+  .replay-label span:not(.replay-icon) {
+    font-size: 12px;
+  }
+  .playback-controls {
+    display: grid;
+    grid-template-columns: 44px 1fr 44px;
+    gap: 10px;
+  }
+  .playback-controls button {
+    min-height: 44px !important;
+    height: 44px !important;
+    font-size: 14px !important;
+  }
+  .playback-controls [data-slot="button"][data-size="icon"] {
+    width: 44px !important;
+  }
+  .playback-controls select {
+    grid-column: 1/-1;
+    font-size: 16px;
+    height: 44px;
+    width: 100%;
+    padding: 0 12px;
+  }
+  .play-button {
+    padding: 0 14px !important;
+  }
+  .playback-controls button svg {
+    width: 18px;
+  }
+  .scenario-select {
+    max-width: none;
+    margin: 0;
+    width: 100%;
+    height: 46px;
+    font-size: 16px;
+    padding: 0 12px;
+  }
+  .timeline-control {
+    min-width: 0;
+    order: 0;
+    gap: 10px;
+  }
+  .timeline-control input {
+    min-width: 0;
+    width: 100%;
+    height: 44px;
+  }
+  .timeline-control > span {
+    font-size: 16px;
+  }
+  .timeline-control small {
+    font-size: 12px;
+  }
+  .safety-footer {
+    font-size: 12px;
+    line-height: 1.7;
+    padding: 18px 20px;
+    align-items: flex-start;
+    gap: 8px;
+    text-align: left;
+  }
+  .safety-footer svg {
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+  .detail-panel {
+    padding: 18px !important;
+  }
+  .detail-panel > .card-heading h3 {
+    font-size: 23px;
+    line-height: 1.4;
+  }
+  .detail-panel textarea {
+    font-size: 16px !important;
+    min-height: 140px;
+    padding: 12px;
+  }
+  .note-item > span {
+    font-size: 12px;
+  }
+  .empty-state {
+    padding: 30px 5px;
+  }
+  .empty-state h4 {
+    font-size: 17px;
+  }
+  .empty-state p {
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .source-links {
+    font-size: 14px;
+  }
+  .real-evidence [data-slot="badge"] {
+    font-size: 11px;
+    line-height: 1.5;
+  }
+  .real-evidence p {
+    font-size: 14px;
+  }
+  .provenance-flow li {
+    gap: 12px;
+  }
+  .provenance-flow li > span {
+    font-size: 12px;
+  }
+  .provenance-flow p {
+    font-size: 14px;
+  }
+  .inline-notice {
+    align-items: flex-start;
+    line-height: 1.75;
+    font-size: 14px;
+  }
+  .inline-notice svg {
+    margin-top: 3px;
+  }
+  .skip-link {
+    left: 16px;
+  }
+  .chart-unavailable {
+    font-size: 13px;
+    align-items: flex-start;
+  }
+  .chart-unavailable svg {
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+}
+.chart-summary {
+  font-size: 12px;
+  line-height: 1.7;
+  color: #576b50;
+  margin: 10px 0 14px;
+}
+.patient-cards {
+  overscroll-behavior-x: contain;
+}
+@media (max-width: 650px) {
+  .chart-summary {
+    font-size: 14px;
+  }
+  .list-subtitle:after {
+    content: " · Swipe to choose";
+  }
+  .forecast-card .forecast-eyebrow {
+    font-size: 12px;
+  }
+  .quality-card .quality-heading [data-slot="badge"] {
+    font-size: 12px;
+  }
+}
+@media (max-width: 650px) {
+  .overview-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+  .main-column,
+  .insight-column {
+    display: contents;
+  }
+  .metric-grid {
+    grid-row: 1;
+  }
+  .forecast-card {
+    grid-row: 2;
+  }
+  .chart-card {
+    grid-row: 3;
+  }
+  .quality-card {
+    grid-row: 4;
+  }
+  .context-card {
+    grid-row: 5;
+  }
+}
