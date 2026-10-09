@@ -6,11 +6,24 @@ A clinician-facing Type 2 diabetes digital-twin research workspace with timestam
 
 Team: **dev**. Author: **J R Deva Dattan**. College: **Army Institute of Technology, Pune**.
 
-Registration is complete for solo Team dev. The repository remains private while the submission package is completed. The presentation and architecture files are grouped in [`dev_Army Institute of Technology/`](dev_Army%20Institute%20of%20Technology/README.md), with canonical copies under `artifacts/submission/`. The final 20:00 walkthrough has been generated with AI narration using the approved stock Heart voice. Its unlisted YouTube link and final platform submission are still pending. See the [video verification summary](docs/submission/VIDEO_QA.md), [transcript](docs/submission/GlucoTwin-transcript.txt) and [captions](docs/submission/GlucoTwin-captions.srt).
+Registration is complete for solo Team dev. The repository remains private while the submission package is completed. The presentation and architecture files are grouped in [`dev_Army Institute of Technology/`](dev_Army%20Institute%20of%20Technology/README.md), with canonical copies under `artifacts/submission/`. The final 20:00 walkthrough has been generated with AI narration using the approved stock Heart voice. The [20:00 walkthrough is available on YouTube](https://youtu.be/Uz4Lio8GJTE). Final platform submission is pending. See the [video verification summary](docs/submission/VIDEO_QA.md), [transcript](docs/submission/GlucoTwin-transcript.txt) and [captions](docs/submission/GlucoTwin-captions.srt).
 
-The submission form requires a 15–20-minute video, while the public listing specifies at least 20 minutes. The exported video is exactly 20:00; its verified YouTube link will be added here before submission.
+The submission form requires a 15–20-minute video, while the public listing specifies at least 20 minutes. The exported video is exactly 20:00. The YouTube watch page was checked while logged out and displayed GlucoTwin, 20:00 and Unlisted; full remote playback verification is not claimed.
 
 Stack: React 19, TypeScript, Vite, shadcn/ui with Radix primitives, Tailwind CSS, Lucide icons, Python and scikit-learn. The runtime is a static browser app with local inference.
+
+## Problem and healthcare use case
+
+Glucose estimates are difficult to review when the patient context, sensor freshness, event definition and evaluation evidence are separated. GlucoTwin explores a clinician-facing review workflow for Type 2 diabetes: combine dated static context with recent sensor readings to inspect a two-hour above-range event estimate, replay its inputs and withhold output when data quality is inadequate. This is a research use case, not a tested clinical intervention or treatment recommendation.
+
+## Submission materials
+
+- [Presentation (PowerPoint)](artifacts/submission/GlucoTwin-presentation.pptx)
+- [Presentation (PDF)](artifacts/submission/GlucoTwin-presentation.pdf)
+- [Architecture and pipeline (PDF)](artifacts/submission/GlucoTwin-architecture.pdf)
+- [20:00 unlisted video](https://youtu.be/Uz4Lio8GJTE)
+- [Video transcript and captions](docs/submission/README.md#final-video)
+- [Third-party attribution](docs/THIRD_PARTY_NOTICES.md)
 
 ## Start
 
@@ -67,6 +80,6 @@ No claims of regulatory compliance, physiological causality, clinical efficacy, 
 
 ## Contribution and license status
 
-AI-assisted design, implementation, tests and analysis are disclosed in `docs/CONTRIBUTIONS.md`. Human ownership, team/college attribution and organizer AI-assistance attestations must be confirmed before submission. No claim that these artifacts are entirely human-authored.
+AI-assisted design, implementation, tests and analysis are disclosed in `docs/CONTRIBUTIONS.md`. The participant and team/college attribution are confirmed above. Organizer-specific AI-assistance declarations must be answered truthfully during submission. No claim that these artifacts are entirely human-authored.
 
 Original project code is MIT-licensed (see LICENSE). Dependency licenses remain theirs. shadcn/ui is MIT-licensed; preserve its attribution. Data licenses are separate from code licensing.

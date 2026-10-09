@@ -23,7 +23,7 @@ Original code uses MIT. The ShanghaiT2DM data retain CC BY 4.0 attribution. Subs
 
 ## Final video
 
-The 20:00 walkthrough has been generated with Kokoro stock Heart neural narration. See the [verification summary](VIDEO_QA.md), [transcript](GlucoTwin-transcript.txt), [captions](GlucoTwin-captions.srt) and [voice credits](NEURAL-VOICE-CREDITS.txt). A verified unlisted YouTube URL is still pending.
+The 20:00 walkthrough has been generated with Kokoro stock Heart neural narration. See the [verification summary](VIDEO_QA.md), [transcript](GlucoTwin-transcript.txt), [captions](GlucoTwin-captions.srt) and [voice credits](NEURAL-VOICE-CREDITS.txt). [Watch the final walkthrough on YouTube](https://youtu.be/Uz4Lio8GJTE). Its logged-out watch page displayed GlucoTwin, 20:00 and Unlisted. Full remote playback verification is not claimed.
 
 ## Before submitting
 

@@ -22,4 +22,4 @@ Both exports passed full decode and have the same duration, resolution and frame
 
 ## Submission status
 
-The final video has been generated. An accessible unlisted YouTube URL is still pending verification and will be added to the root README before submission. The repository remains private. This document does not claim public release, completed platform submission, clinical validation or a clinical deployment.
+The final video has been generated. The participant supplied [the YouTube watch URL](https://youtu.be/Uz4Lio8GJTE). A logged-out check on 9 October 2026 displayed the title GlucoTwin, duration 20:00, visibility Unlisted and channel D (`@user-qd6fc6pi5h`). This verifies the displayed watch-page metadata, not a complete remote playback check or an independent audio-version comparison. The repository remains private. This document does not claim public release, completed platform submission, clinical validation or a clinical deployment.
