@@ -38,3 +38,7 @@ The first mobile layout used undersized text. It was replaced after user feedbac
 - Overview, evidence and provenance panels fit each small viewport; 768px and 1024px layouts were also checked with the stale-feed state.
 - Patient worklist and tab bar use explicitly bounded horizontal scrolling. The document itself has no horizontal overflow.
 - Critical units, stale policy, uncertainty text and research-only disclosure remain visible at mobile sizes.
+
+## Public CI verification (9 October 2026)
+
+GitHub Actions runs were inspected during release. The run for source commit `96545d7574fc176a22077df4e03b7469f2760f18` passed the production build, 22 TypeScript tests, 25 Python tests and 2 Playwright browser tests. This supplements the earlier native-cloud browser checks above; the earlier statement about the cloud executor remains specific to that environment. Documentation-only changes after this source commit do not alter application behavior.

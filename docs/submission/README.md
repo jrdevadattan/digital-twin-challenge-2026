@@ -25,6 +25,10 @@ Original code uses MIT. The ShanghaiT2DM data retain CC BY 4.0 attribution. Subs
 
 The 20:00 walkthrough has been generated with Kokoro stock Heart neural narration. See the [verification summary](VIDEO_QA.md), [transcript](GlucoTwin-transcript.txt), [captions](GlucoTwin-captions.srt) and [voice credits](NEURAL-VOICE-CREDITS.txt). [Watch the final walkthrough on YouTube](https://youtu.be/Uz4Lio8GJTE). Its logged-out watch page displayed GlucoTwin, 20:00 and Unlisted. Full remote playback verification is not claimed.
 
-## Before submitting
+## Submission status
 
-Check current organizer requirements, registration status, and authorship attestations. Recheck the final app after UI changes. The export duration and full decode have been verified. A complete human listen-through is not claimed; review the final walkthrough and verify reviewer access. The submission form requires 15-20 minutes and an unlisted YouTube link in the README, while the listing requires at least 20 minutes; exactly 20:00 meets their common boundary. Inspect the approved release for private data and credentials. Confirm final repository and video links from actual published destinations. Registration is complete for solo Team dev and the final video has been generated. Publication and platform submission remain pending.
+The repository was made public and the Unstop entry was submitted on 9 October 2026 (approximately 19:41 IST). The saved submission was reopened and verified at 14:12 UTC (19:42 IST), including the public repository URL and all 12 saved checklist items. This confirms submission, not selection or acceptance.
+
+The published repository and presentation/architecture artifacts were checked anonymously. The video watch page showed the expected title, 20:00 duration and Unlisted visibility. The local export passed full decode; a complete human listen-through and complete remote playback verification are not claimed. The form requires 15–20 minutes and an unlisted YouTube link, while the public listing specifies at least 20 minutes; the exact 20:00 export meets that common boundary.
+
+GitHub Actions completed successfully for source commit `96545d7574fc176a22077df4e03b7469f2760f18`: 22 TypeScript tests, 25 Python tests, 2 browser tests and the production build. These checks establish software behavior, not clinical efficacy.
