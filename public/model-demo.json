@@ -1,0 +1,593 @@
+{
+  "source": "Selected held-out synthetic illustrations, not representative performance. Full future fixtures must remain hidden until replay time.",
+  "patients": [
+    {
+      "id": "GT-001",
+      "age": 70,
+      "durationYears": 16,
+      "baselineA1c": 8.8,
+      "recordedAt": 1791417600000,
+      "syntheticPatientId": "synthetic-092",
+      "startTimestamp": 1792035900000,
+      "readings": [
+        {
+          "minute": 0,
+          "value": 130.08
+        },
+        {
+          "minute": 15,
+          "value": 127.22
+        },
+        {
+          "minute": 30,
+          "value": 124.31
+        },
+        {
+          "minute": 45,
+          "value": 125.8
+        },
+        {
+          "minute": 60,
+          "value": 135.47
+        },
+        {
+          "minute": 75,
+          "value": 139.39
+        },
+        {
+          "minute": 90,
+          "value": 137.71
+        },
+        {
+          "minute": 105,
+          "value": 140.21
+        },
+        {
+          "minute": 120,
+          "value": 139.57
+        },
+        {
+          "minute": 135,
+          "value": 137.94
+        },
+        {
+          "minute": 150,
+          "value": 135.94
+        },
+        {
+          "minute": 165,
+          "value": 140.72
+        },
+        {
+          "minute": 180,
+          "value": 139.48
+        },
+        {
+          "minute": 195,
+          "value": 140.88
+        },
+        {
+          "minute": 210,
+          "value": 137.69
+        },
+        {
+          "minute": 225,
+          "value": 140.2
+        },
+        {
+          "minute": 240,
+          "value": 142.58
+        },
+        {
+          "minute": 255,
+          "value": 142.14
+        },
+        {
+          "minute": 270,
+          "value": 140.01
+        },
+        {
+          "minute": 285,
+          "value": 135.44
+        },
+        {
+          "minute": 300,
+          "value": 175.51
+        },
+        {
+          "minute": 315,
+          "value": 190.15
+        },
+        {
+          "minute": 330,
+          "value": 189.52
+        },
+        {
+          "minute": 345,
+          "value": 184.06
+        },
+        {
+          "minute": 360,
+          "value": 172.68
+        },
+        {
+          "minute": 375,
+          "value": 167.61
+        },
+        {
+          "minute": 390,
+          "value": 164.58
+        },
+        {
+          "minute": 405,
+          "value": 158.14
+        },
+        {
+          "minute": 420,
+          "value": 151.43
+        },
+        {
+          "minute": 435,
+          "value": 145.97
+        },
+        {
+          "minute": 450,
+          "value": 140.93
+        },
+        {
+          "minute": 465,
+          "value": 141.66
+        },
+        {
+          "minute": 480,
+          "value": 137.64
+        }
+      ],
+      "illustration": "successfulWarning",
+      "initialStep": 16,
+      "expectedEstimate": 0.40001963395211865,
+      "expectedLabel": 1
+    },
+    {
+      "id": "GT-002",
+      "age": 35,
+      "durationYears": 8,
+      "baselineA1c": 8.0,
+      "recordedAt": 1791417600000,
+      "syntheticPatientId": "synthetic-045",
+      "startTimestamp": 1791779400000,
+      "readings": [
+        {
+          "minute": 0,
+          "value": 125.7
+        },
+        {
+          "minute": 15,
+          "value": 126.05
+        },
+        {
+          "minute": 30,
+          "value": 128.09
+        },
+        {
+          "minute": 45,
+          "value": 130.21
+        },
+        {
+          "minute": 60,
+          "value": 128.79
+        },
+        {
+          "minute": 75,
+          "value": 124.96
+        },
+        {
+          "minute": 90,
+          "value": 126.46
+        },
+        {
+          "minute": 105,
+          "value": 128.17
+        },
+        {
+          "minute": 120,
+          "value": 128.29
+        },
+        {
+          "minute": 135,
+          "value": 132.32
+        },
+        {
+          "minute": 150,
+          "value": 132.08
+        },
+        {
+          "minute": 165,
+          "value": 129.02
+        },
+        {
+          "minute": 180,
+          "value": 132.1
+        },
+        {
+          "minute": 195,
+          "value": 138.82
+        },
+        {
+          "minute": 210,
+          "value": 139.43
+        },
+        {
+          "minute": 225,
+          "value": 137.38
+        },
+        {
+          "minute": 240,
+          "value": 165.96
+        },
+        {
+          "minute": 255,
+          "value": 179.95
+        },
+        {
+          "minute": 270,
+          "value": 186.47
+        },
+        {
+          "minute": 285,
+          "value": 178.7
+        },
+        {
+          "minute": 300,
+          "value": 169.82
+        },
+        {
+          "minute": 315,
+          "value": 160.87
+        },
+        {
+          "minute": 330,
+          "value": 150.34
+        },
+        {
+          "minute": 345,
+          "value": 146.73
+        },
+        {
+          "minute": 360,
+          "value": 143.85
+        },
+        {
+          "minute": 375,
+          "value": 143.92
+        },
+        {
+          "minute": 390,
+          "value": 140.67
+        },
+        {
+          "minute": 405,
+          "value": 136.87
+        },
+        {
+          "minute": 420,
+          "value": 135.07
+        },
+        {
+          "minute": 435,
+          "value": 129.26
+        },
+        {
+          "minute": 450,
+          "value": 128.97
+        },
+        {
+          "minute": 465,
+          "value": 126.81
+        },
+        {
+          "minute": 480,
+          "value": 122.93
+        }
+      ],
+      "illustration": "falsePositive",
+      "initialStep": 16,
+      "expectedEstimate": 0.3497615480894566,
+      "expectedLabel": 0
+    },
+    {
+      "id": "GT-003",
+      "age": 32,
+      "durationYears": 6,
+      "baselineA1c": 6.7,
+      "recordedAt": 1791417600000,
+      "syntheticPatientId": "synthetic-151",
+      "startTimestamp": 1791967500000,
+      "readings": [
+        {
+          "minute": 0,
+          "value": 116.2
+        },
+        {
+          "minute": 15,
+          "value": 116.73
+        },
+        {
+          "minute": 30,
+          "value": 147.03
+        },
+        {
+          "minute": 45,
+          "value": 159.81
+        },
+        {
+          "minute": 60,
+          "value": 163.39
+        },
+        {
+          "minute": 75,
+          "value": 154.79
+        },
+        {
+          "minute": 90,
+          "value": 152.58
+        },
+        {
+          "minute": 105,
+          "value": 150.26
+        },
+        {
+          "minute": 120,
+          "value": 140.43
+        },
+        {
+          "minute": 135,
+          "value": 126.23
+        },
+        {
+          "minute": 150,
+          "value": 116.67
+        },
+        {
+          "minute": 165,
+          "value": 114.8
+        },
+        {
+          "minute": 180,
+          "value": 115.51
+        },
+        {
+          "minute": 195,
+          "value": 110.11
+        },
+        {
+          "minute": 210,
+          "value": 111.5
+        },
+        {
+          "minute": 225,
+          "value": 114.36
+        },
+        {
+          "minute": 240,
+          "value": 137.33
+        },
+        {
+          "minute": 255,
+          "value": 171.68
+        },
+        {
+          "minute": 270,
+          "value": 183.33
+        },
+        {
+          "minute": 285,
+          "value": 182.55
+        },
+        {
+          "minute": 300,
+          "value": 168.06
+        },
+        {
+          "minute": 315,
+          "value": 154.79
+        },
+        {
+          "minute": 330,
+          "value": 146.09
+        },
+        {
+          "minute": 345,
+          "value": 144.24
+        },
+        {
+          "minute": 360,
+          "value": 128.9
+        },
+        {
+          "minute": 375,
+          "value": 118.24
+        },
+        {
+          "minute": 390,
+          "value": 112.74
+        },
+        {
+          "minute": 405,
+          "value": 111.2
+        },
+        {
+          "minute": 420,
+          "value": 111.82
+        },
+        {
+          "minute": 435,
+          "value": 108.77
+        },
+        {
+          "minute": 450,
+          "value": 112.83
+        },
+        {
+          "minute": 465,
+          "value": 115.94
+        },
+        {
+          "minute": 480,
+          "value": 112.2
+        }
+      ],
+      "illustration": "missedEpisode",
+      "initialStep": 16,
+      "expectedEstimate": 0.08006382996187819,
+      "expectedLabel": 1
+    },
+    {
+      "id": "GT-004",
+      "age": 79,
+      "durationYears": 10,
+      "baselineA1c": 5.8,
+      "recordedAt": 1791417600000,
+      "syntheticPatientId": "synthetic-053",
+      "startTimestamp": 1791558900000,
+      "readings": [
+        {
+          "minute": 0,
+          "value": 140.8
+        },
+        {
+          "minute": 15,
+          "value": 134.08
+        },
+        {
+          "minute": 30,
+          "value": 121.04
+        },
+        {
+          "minute": 45,
+          "value": 119.33
+        },
+        {
+          "minute": 60,
+          "value": 120.94
+        },
+        {
+          "minute": 75,
+          "value": 120.22
+        },
+        {
+          "minute": 90,
+          "value": 121.6
+        },
+        {
+          "minute": 105,
+          "value": 121.72
+        },
+        {
+          "minute": 120,
+          "value": 118.45
+        },
+        {
+          "minute": 135,
+          "value": 116.42
+        },
+        {
+          "minute": 150,
+          "value": 113.51
+        },
+        {
+          "minute": 165,
+          "value": 108.0
+        },
+        {
+          "minute": 180,
+          "value": 105.31
+        },
+        {
+          "minute": 195,
+          "value": 103.53
+        },
+        {
+          "minute": 210,
+          "value": 108.14
+        },
+        {
+          "minute": 225,
+          "value": 109.22
+        },
+        {
+          "minute": 240,
+          "value": 115.05
+        },
+        {
+          "minute": 255,
+          "value": 113.96
+        },
+        {
+          "minute": 270,
+          "value": 119.34
+        },
+        {
+          "minute": 285,
+          "value": 149.43
+        },
+        {
+          "minute": 300,
+          "value": 162.0
+        },
+        {
+          "minute": 315,
+          "value": 162.48
+        },
+        {
+          "minute": 330,
+          "value": 153.75
+        },
+        {
+          "minute": 345,
+          "value": 151.35
+        },
+        {
+          "minute": 360,
+          "value": 143.39
+        },
+        {
+          "minute": 375,
+          "value": 134.63
+        },
+        {
+          "minute": 390,
+          "value": 130.11
+        },
+        {
+          "minute": 405,
+          "value": 125.28
+        },
+        {
+          "minute": 420,
+          "value": 121.45
+        },
+        {
+          "minute": 435,
+          "value": 110.29
+        },
+        {
+          "minute": 450,
+          "value": 112.05
+        },
+        {
+          "minute": 465,
+          "value": 115.4
+        },
+        {
+          "minute": 480,
+          "value": 114.81
+        }
+      ],
+      "illustration": "stable",
+      "initialStep": 16,
+      "expectedEstimate": 0.02000200473853057,
+      "expectedLabel": 0
+    }
+  ]
+}

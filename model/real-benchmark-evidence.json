@@ -1,0 +1,538 @@
+{
+  "kind": "Real retrospective feasibility benchmark; separate from synthetic UI model",
+  "syntheticOnly": false,
+  "deployedInDemo": false,
+  "version": "shanghai-t2dm-retrospective-v1",
+  "source": "https://figshare.com/articles/dataset/diabetes_datasets_zip/21600933/5",
+  "doi": "10.6084/m9.figshare.21600933.v5",
+  "license": "CC BY 4.0",
+  "attribution": "Zhao et al., Chinese diabetes datasets for data-driven machine learning, Scientific Data (2023), doi:10.1038/s41597-023-01940-7; Figshare release5. Modified by deriving trailing features and aggregate benchmark results.",
+  "sourceArchiveSha256": "59b5f5c4053a32bb6b7827844a0191597dc82228fe88ce332a189fdfc659c4cb",
+  "seed": 20261009,
+  "splitSeed": 20261040,
+  "people": 100,
+  "sessions": 109,
+  "sourceAudit": {
+    "rawRows": 112475,
+    "missingCGM": 13,
+    "gapsOver15Minutes": 11,
+    "bareCGMHeaders": 2,
+    "timezoneNaive": true
+  },
+  "splitCounts": {
+    "train": 60,
+    "validation": 20,
+    "test": 20
+  },
+  "splitManifestDigest": "945da960a3d4ded886aee8124c755612b7b88622c6e340e683e0e0254d35b21b",
+  "eligibleWindows": {
+    "train": 51601,
+    "validation": 16427,
+    "test": 20687
+  },
+  "prevalence": {
+    "train": 0.13065638262824364,
+    "validation": 0.12059414378766664,
+    "test": 0.09953110649199981
+  },
+  "features": [
+    "current",
+    "slope60PerMinute",
+    "mean60",
+    "std60",
+    "mean345",
+    "std345",
+    "age",
+    "recordedGenderFemale1Male2"
+  ],
+  "eligibility": "24 contiguous past/current readings (345-minute span), current<=180, 8 contiguous future readings. No missing target interpolation. Preserve measured glucose 39.6\u2013468; do not clip input.",
+  "target": "Two consecutive >180 mg/dL readings fully within next 120 minutes. Missing future outcomes unknown.",
+  "staticTimingAssumption": "Age and recorded gender are untimestamped summary context, assumed available at enrollment for this retrospective feasibility analysis; prospective availability is not proven. No laboratory, duration, BMI, complication, treatment or outcome-summary features used.",
+  "thresholdSelection": "Validation F1 over fixed 0.10\u20130.80 grid, step 0.05, separate per model. Test not used for tuning; alert burdens not matched.",
+  "metrics": {
+    "static": {
+      "validation": {
+        "calibrationBins": [
+          {
+            "lower": 0.0,
+            "count": 1421,
+            "meanEstimate": 0.09821373591292203,
+            "observedFraction": 0.02674173117522871
+          },
+          {
+            "lower": 0.1,
+            "count": 15006,
+            "meanEstimate": 0.1298793920553758,
+            "observedFraction": 0.1294815407170465
+          }
+        ],
+        "prAuc": 0.1741649804053605,
+        "rocAuc": 0.6155675197080279,
+        "brier": 0.10441369486049812,
+        "precision": 0.1294815407170465,
+        "recall": 0.9808177688036346,
+        "threshold": 0.1,
+        "positiveWindows": 1981,
+        "windows": 16427
+      },
+      "test": {
+        "calibrationBins": [
+          {
+            "lower": 0.0,
+            "count": 1933,
+            "meanEstimate": 0.09565141902404008,
+            "observedFraction": 0.0387997930677703
+          },
+          {
+            "lower": 0.1,
+            "count": 18754,
+            "meanEstimate": 0.1307143449762656,
+            "observedFraction": 0.10579076463687746
+          }
+        ],
+        "prAuc": 0.11885253322366279,
+        "rocAuc": 0.563765185352897,
+        "brier": 0.08972262991133219,
+        "precision": 0.10579076463687746,
+        "recall": 0.9635745507527926,
+        "threshold": 0.1,
+        "positiveWindows": 2059,
+        "windows": 20687,
+        "prAucPatientBootstrap95": [
+          0.08927637738799003,
+          0.14462250345178113
+        ]
+      },
+      "events": {
+        "forecastableEpisodes": 326,
+        "episodesWarned": 275,
+        "eventSensitivity": 0.843558282208589,
+        "deduplicatedAlerts": 2478,
+        "falseAlerts": 2207,
+        "monitoredPatientDays": 254.03125000000003,
+        "denominatorDefinition": "Recorded-span patient-days: last minus first observation plus 15 minutes, including gaps and current-high periods; not sensor uptime or eligible forecast days.",
+        "falseAlertsPerPatientDay": 8.687907491696395,
+        "leadTimeMedianMinutes": 60.0,
+        "cooldownMinutes": 120
+      }
+    },
+    "dynamic": {
+      "validation": {
+        "calibrationBins": [
+          {
+            "lower": 0.0,
+            "count": 10440,
+            "meanEstimate": 0.046000176777965515,
+            "observedFraction": 0.05517241379310345
+          },
+          {
+            "lower": 0.1,
+            "count": 3149,
+            "meanEstimate": 0.14075725412181483,
+            "observedFraction": 0.15084153699587172
+          },
+          {
+            "lower": 0.2,
+            "count": 1399,
+            "meanEstimate": 0.2436982454047757,
+            "observedFraction": 0.2058613295210865
+          },
+          {
+            "lower": 0.30000000000000004,
+            "count": 710,
+            "meanEstimate": 0.3447947716176291,
+            "observedFraction": 0.31408450704225355
+          },
+          {
+            "lower": 0.4,
+            "count": 342,
+            "meanEstimate": 0.44210713941487084,
+            "observedFraction": 0.4590643274853801
+          },
+          {
+            "lower": 0.5,
+            "count": 197,
+            "meanEstimate": 0.5442498817620868,
+            "observedFraction": 0.6091370558375635
+          },
+          {
+            "lower": 0.6000000000000001,
+            "count": 99,
+            "meanEstimate": 0.6444520163039879,
+            "observedFraction": 0.6767676767676768
+          },
+          {
+            "lower": 0.7000000000000001,
+            "count": 65,
+            "meanEstimate": 0.748420617452158,
+            "observedFraction": 0.7846153846153846
+          },
+          {
+            "lower": 0.8,
+            "count": 24,
+            "meanEstimate": 0.8458874575314529,
+            "observedFraction": 0.9166666666666666
+          },
+          {
+            "lower": 0.9,
+            "count": 2,
+            "meanEstimate": 0.911977077939842,
+            "observedFraction": 1.0
+          }
+        ],
+        "prAuc": 0.3855144673814738,
+        "rocAuc": 0.7768209942396835,
+        "brier": 0.09049986564337775,
+        "precision": 0.3276955602536998,
+        "recall": 0.469459868753155,
+        "threshold": 0.20000000000000004,
+        "positiveWindows": 1981,
+        "windows": 16427
+      },
+      "test": {
+        "calibrationBins": [
+          {
+            "lower": 0.0,
+            "count": 12509,
+            "meanEstimate": 0.04967766728608298,
+            "observedFraction": 0.045567191622032134
+          },
+          {
+            "lower": 0.1,
+            "count": 4487,
+            "meanEstimate": 0.14105621766296694,
+            "observedFraction": 0.09716960106975707
+          },
+          {
+            "lower": 0.2,
+            "count": 1941,
+            "meanEstimate": 0.24415409947338335,
+            "observedFraction": 0.18753219989696032
+          },
+          {
+            "lower": 0.30000000000000004,
+            "count": 889,
+            "meanEstimate": 0.34372456590909484,
+            "observedFraction": 0.281214848143982
+          },
+          {
+            "lower": 0.4,
+            "count": 417,
+            "meanEstimate": 0.4435247081332041,
+            "observedFraction": 0.42206235011990406
+          },
+          {
+            "lower": 0.5,
+            "count": 213,
+            "meanEstimate": 0.5456337529515842,
+            "observedFraction": 0.4788732394366197
+          },
+          {
+            "lower": 0.6000000000000001,
+            "count": 128,
+            "meanEstimate": 0.6461030899851876,
+            "observedFraction": 0.6796875
+          },
+          {
+            "lower": 0.7000000000000001,
+            "count": 62,
+            "meanEstimate": 0.7423869077034424,
+            "observedFraction": 0.6451612903225806
+          },
+          {
+            "lower": 0.8,
+            "count": 29,
+            "meanEstimate": 0.8397991110133716,
+            "observedFraction": 0.7586206896551724
+          },
+          {
+            "lower": 0.9,
+            "count": 12,
+            "meanEstimate": 0.9303280753194968,
+            "observedFraction": 1.0
+          }
+        ],
+        "prAuc": 0.33977022355848974,
+        "rocAuc": 0.7494842661144092,
+        "brier": 0.0789623410306184,
+        "precision": 0.2852885396911406,
+        "recall": 0.5114133074307916,
+        "threshold": 0.20000000000000004,
+        "positiveWindows": 2059,
+        "windows": 20687,
+        "prAucPatientBootstrap95": [
+          0.27773341830056747,
+          0.3970672722839306
+        ]
+      },
+      "events": {
+        "forecastableEpisodes": 326,
+        "episodesWarned": 303,
+        "eventSensitivity": 0.9294478527607362,
+        "deduplicatedAlerts": 1066,
+        "falseAlerts": 768,
+        "monitoredPatientDays": 254.03125000000003,
+        "denominatorDefinition": "Recorded-span patient-days: last minus first observation plus 15 minutes, including gaps and current-high periods; not sensor uptime or eligible forecast days.",
+        "falseAlertsPerPatientDay": 3.0232500922622707,
+        "leadTimeMedianMinutes": 45.0,
+        "cooldownMinutes": 120
+      }
+    },
+    "fused": {
+      "validation": {
+        "calibrationBins": [
+          {
+            "lower": 0.0,
+            "count": 10279,
+            "meanEstimate": 0.04579573411898092,
+            "observedFraction": 0.052728864675552094
+          },
+          {
+            "lower": 0.1,
+            "count": 3247,
+            "meanEstimate": 0.14143934433864613,
+            "observedFraction": 0.14813674160763782
+          },
+          {
+            "lower": 0.2,
+            "count": 1407,
+            "meanEstimate": 0.24470804259469806,
+            "observedFraction": 0.2125088841506752
+          },
+          {
+            "lower": 0.30000000000000004,
+            "count": 737,
+            "meanEstimate": 0.3454726362986636,
+            "observedFraction": 0.3093622795115332
+          },
+          {
+            "lower": 0.4,
+            "count": 345,
+            "meanEstimate": 0.44341466561331633,
+            "observedFraction": 0.45507246376811594
+          },
+          {
+            "lower": 0.5,
+            "count": 205,
+            "meanEstimate": 0.5441133531842978,
+            "observedFraction": 0.5756097560975609
+          },
+          {
+            "lower": 0.6000000000000001,
+            "count": 112,
+            "meanEstimate": 0.646087020559553,
+            "observedFraction": 0.6964285714285714
+          },
+          {
+            "lower": 0.7000000000000001,
+            "count": 64,
+            "meanEstimate": 0.7497004737683356,
+            "observedFraction": 0.796875
+          },
+          {
+            "lower": 0.8,
+            "count": 29,
+            "meanEstimate": 0.8431482737436569,
+            "observedFraction": 0.8620689655172413
+          },
+          {
+            "lower": 0.9,
+            "count": 2,
+            "meanEstimate": 0.9137587713053554,
+            "observedFraction": 1.0
+          }
+        ],
+        "prAuc": 0.3907045916483484,
+        "rocAuc": 0.7815930699250523,
+        "brier": 0.09005926294514595,
+        "precision": 0.3302309548431575,
+        "recall": 0.48359414437152953,
+        "threshold": 0.20000000000000004,
+        "positiveWindows": 1981,
+        "windows": 16427
+      },
+      "test": {
+        "calibrationBins": [
+          {
+            "lower": 0.0,
+            "count": 12654,
+            "meanEstimate": 0.04920737283512684,
+            "observedFraction": 0.04528212422949265
+          },
+          {
+            "lower": 0.1,
+            "count": 4436,
+            "meanEstimate": 0.1410686569693593,
+            "observedFraction": 0.10076645626690713
+          },
+          {
+            "lower": 0.2,
+            "count": 1841,
+            "meanEstimate": 0.24414343897162366,
+            "observedFraction": 0.18848451928299836
+          },
+          {
+            "lower": 0.30000000000000004,
+            "count": 905,
+            "meanEstimate": 0.34382348760029025,
+            "observedFraction": 0.27845303867403315
+          },
+          {
+            "lower": 0.4,
+            "count": 405,
+            "meanEstimate": 0.44259131177227434,
+            "observedFraction": 0.43209876543209874
+          },
+          {
+            "lower": 0.5,
+            "count": 222,
+            "meanEstimate": 0.5452629035643844,
+            "observedFraction": 0.481981981981982
+          },
+          {
+            "lower": 0.6000000000000001,
+            "count": 124,
+            "meanEstimate": 0.6480753147339499,
+            "observedFraction": 0.6854838709677419
+          },
+          {
+            "lower": 0.7000000000000001,
+            "count": 58,
+            "meanEstimate": 0.7422020278718777,
+            "observedFraction": 0.6551724137931034
+          },
+          {
+            "lower": 0.8,
+            "count": 29,
+            "meanEstimate": 0.836810849831667,
+            "observedFraction": 0.7586206896551724
+          },
+          {
+            "lower": 0.9,
+            "count": 13,
+            "meanEstimate": 0.9287644345789633,
+            "observedFraction": 1.0
+          }
+        ],
+        "prAuc": 0.34217017647900944,
+        "rocAuc": 0.7516108960039997,
+        "brier": 0.07868333480475095,
+        "precision": 0.2888518209619127,
+        "recall": 0.5046138902379796,
+        "threshold": 0.20000000000000004,
+        "positiveWindows": 2059,
+        "windows": 20687,
+        "prAucPatientBootstrap95": [
+          0.2776342377638747,
+          0.39700410881703263
+        ],
+        "prAucMinusDynamicPatientBootstrap95": [
+          -0.002482917121220528,
+          0.007578640564293173
+        ]
+      },
+      "events": {
+        "forecastableEpisodes": 326,
+        "episodesWarned": 302,
+        "eventSensitivity": 0.9263803680981595,
+        "deduplicatedAlerts": 1052,
+        "falseAlerts": 754,
+        "monitoredPatientDays": 254.03125000000003,
+        "denominatorDefinition": "Recorded-span patient-days: last minus first observation plus 15 minutes, including gaps and current-high periods; not sensor uptime or eligible forecast days.",
+        "falseAlertsPerPatientDay": 2.968138762455406,
+        "leadTimeMedianMinutes": 45.0,
+        "cooldownMinutes": 120
+      }
+    },
+    "persistence": {
+      "test": {
+        "calibrationBins": [
+          {
+            "lower": 0.0,
+            "count": 20687,
+            "meanEstimate": 0.0,
+            "observedFraction": 0.09953110649199981
+          }
+        ],
+        "prAuc": 0.09953110649199981,
+        "rocAuc": 0.5,
+        "brier": 0.09953110649199981,
+        "precision": 0.0,
+        "recall": 0.0,
+        "threshold": 0.5,
+        "positiveWindows": 2059,
+        "windows": 20687
+      },
+      "events": {
+        "forecastableEpisodes": 326,
+        "episodesWarned": 0,
+        "eventSensitivity": 0.0,
+        "deduplicatedAlerts": 0,
+        "falseAlerts": 0,
+        "monitoredPatientDays": 254.03125000000003,
+        "denominatorDefinition": "Recorded-span patient-days: last minus first observation plus 15 minutes, including gaps and current-high periods; not sensor uptime or eligible forecast days.",
+        "falseAlertsPerPatientDay": 0.0,
+        "leadTimeMedianMinutes": null,
+        "cooldownMinutes": 120
+      }
+    }
+  },
+  "continuousBaselines": {
+    "persistence": {
+      "30": {
+        "mae": 10.545057282351234,
+        "rmse": 15.961177703932888,
+        "validationResidual90MgDl": 25.200000000000003,
+        "testBandCoverage": 0.9052061681249094
+      },
+      "60": {
+        "mae": 17.439909121670617,
+        "rmse": 26.19594772641852,
+        "validationResidual90MgDl": 43.19999999999999,
+        "testBandCoverage": 0.9076714845071784
+      },
+      "120": {
+        "mae": 25.99432493836709,
+        "rmse": 37.277503985365406,
+        "validationResidual90MgDl": 64.8,
+        "testBandCoverage": 0.9169526755933678
+      }
+    },
+    "linearTrend": {
+      "30": {
+        "mae": 11.826778169865133,
+        "rmse": 17.417427090485017,
+        "validationResidual90MgDl": 28.439999999999998,
+        "testBandCoverage": 0.9017740610044955
+      },
+      "60": {
+        "mae": 22.27668584134964,
+        "rmse": 32.3784330770524,
+        "validationResidual90MgDl": 54.72,
+        "testBandCoverage": 0.9026441726688258
+      },
+      "120": {
+        "mae": 42.303500749262824,
+        "rmse": 59.213505121269044,
+        "validationResidual90MgDl": 105.12000000000005,
+        "testBandCoverage": 0.9093633682989317
+      }
+    }
+  },
+  "bootstrap": "300 patient-cluster resamples; only 20 held-out people, uncertainty is substantial.",
+  "fusionConclusion": "The paired 95% bootstrap interval for fused-minus-dynamic PR-AUC includes zero; a meaningful fusion advantage is not established.",
+  "limits": [
+    "Retrospective single-source Chinese dataset; no Indian-population or prospective clinical validation.",
+    "No verified prospective timestamps for static summary context.",
+    "All sessions for each person held in one split; overlapping windows remain correlated.",
+    "Real benchmark model is NOT the synthetic browser model and is not deployed in the demo.",
+    "No row-level source records, traces, per-person predictions or real fitted coefficients exported.",
+    "Threshold tuned for F1, not clinical utility; false-alert burden must be considered."
+  ],
+  "software": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "sklearn": "1.8.0"
+  }
+}

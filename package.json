@@ -1,0 +1,44 @@
+{
+  "name": "glucotwin",
+  "version": "1.0.0",
+  "description": "Synthetic clinician-facing glucose digital-twin research prototype",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "test": "vitest run",
+    "preview": "vite preview --host 0.0.0.0",
+    "test:e2e": "playwright test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "@radix-ui/react-slot": "1.4.0",
+    "@radix-ui/react-tabs": "1.1.22",
+    "class-variance-authority": "0.7.1",
+    "clsx": "2.1.1",
+    "cn": "^0.4.0",
+    "lucide-react": "1.54.0",
+    "radix-ui": "^1.7.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "tailwind-merge": "3.7.0"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
+    "@playwright/test": "1.64.0",
+    "@tailwindcss/vite": "4.3.3",
+    "@types/node": "26.6.4",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.1.2",
+    "prettier": "3.9.9",
+    "shadcn": "4.21.4",
+    "tailwindcss": "4.3.3",
+    "typescript": "7.0.2",
+    "vite": "8.3.4",
+    "vitest": "5.0.3"
+  },
+  "private": true
+}

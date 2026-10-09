@@ -1,0 +1,831 @@
+{
+  "version": "glucotwin-synthetic-logistic-v1",
+  "seed": 20261009,
+  "syntheticOnly": true,
+  "patients": 240,
+  "daysPerPatient": 7,
+  "splitCounts": {
+    "train": 144,
+    "validation": 48,
+    "test": 48
+  },
+  "splits": {
+    "train": [
+      118,
+      148,
+      225,
+      133,
+      175,
+      78,
+      97,
+      189,
+      91,
+      154,
+      145,
+      34,
+      94,
+      211,
+      14,
+      210,
+      197,
+      66,
+      76,
+      164,
+      15,
+      28,
+      209,
+      127,
+      138,
+      183,
+      113,
+      170,
+      46,
+      220,
+      139,
+      25,
+      103,
+      50,
+      194,
+      100,
+      134,
+      98,
+      181,
+      80,
+      93,
+      54,
+      199,
+      20,
+      124,
+      107,
+      22,
+      71,
+      70,
+      36,
+      158,
+      24,
+      79,
+      121,
+      83,
+      188,
+      27,
+      111,
+      224,
+      67,
+      137,
+      130,
+      159,
+      206,
+      156,
+      205,
+      62,
+      238,
+      165,
+      1,
+      74,
+      112,
+      237,
+      16,
+      230,
+      215,
+      17,
+      102,
+      195,
+      30,
+      135,
+      48,
+      35,
+      182,
+      95,
+      147,
+      63,
+      217,
+      33,
+      213,
+      11,
+      184,
+      13,
+      116,
+      19,
+      108,
+      29,
+      218,
+      131,
+      75,
+      207,
+      185,
+      31,
+      160,
+      226,
+      191,
+      177,
+      196,
+      51,
+      105,
+      77,
+      69,
+      136,
+      149,
+      228,
+      6,
+      68,
+      3,
+      39,
+      4,
+      239,
+      64,
+      26,
+      232,
+      128,
+      59,
+      37,
+      18,
+      23,
+      89,
+      208,
+      58,
+      172,
+      32,
+      114,
+      85,
+      216,
+      81,
+      214,
+      192,
+      193,
+      141,
+      161,
+      235
+    ],
+    "validation": [
+      72,
+      96,
+      146,
+      174,
+      231,
+      173,
+      157,
+      155,
+      129,
+      233,
+      168,
+      167,
+      200,
+      10,
+      153,
+      132,
+      9,
+      106,
+      49,
+      150,
+      44,
+      38,
+      222,
+      234,
+      186,
+      61,
+      169,
+      219,
+      204,
+      120,
+      55,
+      2,
+      109,
+      178,
+      5,
+      202,
+      82,
+      201,
+      123,
+      187,
+      180,
+      115,
+      42,
+      104,
+      87,
+      99,
+      56,
+      203
+    ],
+    "test": [
+      227,
+      12,
+      7,
+      117,
+      163,
+      84,
+      142,
+      125,
+      166,
+      60,
+      144,
+      101,
+      171,
+      73,
+      236,
+      198,
+      57,
+      110,
+      41,
+      151,
+      43,
+      223,
+      143,
+      92,
+      179,
+      47,
+      119,
+      21,
+      212,
+      122,
+      176,
+      162,
+      40,
+      45,
+      190,
+      152,
+      0,
+      229,
+      126,
+      90,
+      65,
+      140,
+      88,
+      8,
+      86,
+      52,
+      221,
+      53
+    ]
+  },
+  "eligibleWindows": {
+    "train": 92093,
+    "validation": 30186,
+    "test": 30248
+  },
+  "prevalence": {
+    "train": 0.052827033542180185,
+    "validation": 0.08000397535281256,
+    "test": 0.07729436656969056
+  },
+  "eventProtocol": "Two consecutive 15-minute values >180 mg/dL among the next eight readings (120 minutes). Current value >180 excluded conservatively. Missing future labels unknown.",
+  "thresholdSelection": "Validation F1 over fixed 0.10..0.80 grid (0.05 step), separately per model; test used once for evaluation. Alert burden differs across models.",
+  "metrics": {
+    "static": {
+      "validation": {
+        "calibrationBins": [
+          {
+            "lower": 0.0,
+            "count": 25992,
+            "meanEstimate": 0.043147764290544434,
+            "observedFraction": 0.06921360418590336
+          },
+          {
+            "lower": 0.1,
+            "count": 3626,
+            "meanEstimate": 0.1293004832309049,
+            "observedFraction": 0.13320463320463322
+          },
+          {
+            "lower": 0.2,
+            "count": 568,
+            "meanEstimate": 0.24967906177492707,
+            "observedFraction": 0.23415492957746478
+          }
+        ],
+        "prAuc": 0.14594270615909744,
+        "rocAuc": 0.7017359366120115,
+        "brier": 0.07195366664643,
+        "precision": 0.1468764902241297,
+        "recall": 0.25507246376811593,
+        "threshold": 0.1,
+        "positiveWindows": 2415,
+        "windows": 30186
+      },
+      "test": {
+        "calibrationBins": [
+          {
+            "lower": 0.0,
+            "count": 25055,
+            "meanEstimate": 0.0421403866517004,
+            "observedFraction": 0.05336260227499501
+          },
+          {
+            "lower": 0.1,
+            "count": 2966,
+            "meanEstimate": 0.15285800502148497,
+            "observedFraction": 0.16284558327714094
+          },
+          {
+            "lower": 0.2,
+            "count": 2227,
+            "meanEstimate": 0.22799730522358844,
+            "observedFraction": 0.23259991019308487
+          }
+        ],
+        "prAuc": 0.17758797966090445,
+        "rocAuc": 0.7434435321403057,
+        "brier": 0.06753824527875851,
+        "precision": 0.19275948392066242,
+        "recall": 0.4281437125748503,
+        "threshold": 0.1,
+        "positiveWindows": 2338,
+        "windows": 30248
+      },
+      "events": {
+        "forecastableEpisodes": 334,
+        "episodesWarned": 132,
+        "eventSensitivity": 0.39520958083832336,
+        "deduplicatedAlerts": 714,
+        "falseAlerts": 582,
+        "falseAlertsPerPatientDay": 1.7321428571428572,
+        "leadTimeMinutes": {
+          "median": 60.0,
+          "min": 15,
+          "max": 105
+        },
+        "cooldownMinutes": 120,
+        "denominatorPatientDays": 336
+      }
+    },
+    "dynamic": {
+      "validation": {
+        "calibrationBins": [
+          {
+            "lower": 0.0,
+            "count": 24025,
+            "meanEstimate": 0.030605257308451452,
+            "observedFraction": 0.04195629552549428
+          },
+          {
+            "lower": 0.1,
+            "count": 4028,
+            "meanEstimate": 0.13955313862930577,
+            "observedFraction": 0.16385302879841113
+          },
+          {
+            "lower": 0.2,
+            "count": 1340,
+            "meanEstimate": 0.24092608124652973,
+            "observedFraction": 0.2708955223880597
+          },
+          {
+            "lower": 0.30000000000000004,
+            "count": 473,
+            "meanEstimate": 0.3437250209724091,
+            "observedFraction": 0.3974630021141649
+          },
+          {
+            "lower": 0.4,
+            "count": 201,
+            "meanEstimate": 0.4418312583118665,
+            "observedFraction": 0.5621890547263682
+          },
+          {
+            "lower": 0.5,
+            "count": 78,
+            "meanEstimate": 0.5457304851551188,
+            "observedFraction": 0.6282051282051282
+          },
+          {
+            "lower": 0.6000000000000001,
+            "count": 36,
+            "meanEstimate": 0.6403280007117864,
+            "observedFraction": 0.8055555555555556
+          },
+          {
+            "lower": 0.7000000000000001,
+            "count": 5,
+            "meanEstimate": 0.7428377805645163,
+            "observedFraction": 1.0
+          }
+        ],
+        "prAuc": 0.30715381965051264,
+        "rocAuc": 0.8024161820950151,
+        "brier": 0.06469166201935324,
+        "precision": 0.2877637130801688,
+        "recall": 0.4236024844720497,
+        "threshold": 0.15000000000000002,
+        "positiveWindows": 2415,
+        "windows": 30186
+      },
+      "test": {
+        "calibrationBins": [
+          {
+            "lower": 0.0,
+            "count": 23565,
+            "meanEstimate": 0.033167638053456426,
+            "observedFraction": 0.03942287290473159
+          },
+          {
+            "lower": 0.1,
+            "count": 4322,
+            "meanEstimate": 0.1397494487216956,
+            "observedFraction": 0.15409532623785285
+          },
+          {
+            "lower": 0.2,
+            "count": 1443,
+            "meanEstimate": 0.24199178374275004,
+            "observedFraction": 0.24255024255024255
+          },
+          {
+            "lower": 0.30000000000000004,
+            "count": 519,
+            "meanEstimate": 0.3440006232581512,
+            "observedFraction": 0.35260115606936415
+          },
+          {
+            "lower": 0.4,
+            "count": 244,
+            "meanEstimate": 0.4425871403695063,
+            "observedFraction": 0.46311475409836067
+          },
+          {
+            "lower": 0.5,
+            "count": 109,
+            "meanEstimate": 0.5416052324159567,
+            "observedFraction": 0.5963302752293578
+          },
+          {
+            "lower": 0.6000000000000001,
+            "count": 38,
+            "meanEstimate": 0.6369779407588125,
+            "observedFraction": 0.6578947368421053
+          },
+          {
+            "lower": 0.7000000000000001,
+            "count": 8,
+            "meanEstimate": 0.7278503222374586,
+            "observedFraction": 0.875
+          }
+        ],
+        "prAuc": 0.28367918232359224,
+        "rocAuc": 0.7980436169172633,
+        "brier": 0.06318763311774807,
+        "precision": 0.26046511627906976,
+        "recall": 0.4311377245508982,
+        "threshold": 0.15000000000000002,
+        "positiveWindows": 2338,
+        "windows": 30248
+      },
+      "events": {
+        "forecastableEpisodes": 334,
+        "episodesWarned": 293,
+        "eventSensitivity": 0.8772455089820359,
+        "deduplicatedAlerts": 1300,
+        "falseAlerts": 1007,
+        "falseAlertsPerPatientDay": 2.9970238095238093,
+        "leadTimeMinutes": {
+          "median": 30.0,
+          "min": 15,
+          "max": 105
+        },
+        "cooldownMinutes": 120,
+        "denominatorPatientDays": 336
+      }
+    },
+    "fused": {
+      "validation": {
+        "calibrationBins": [
+          {
+            "lower": 0.0,
+            "count": 24038,
+            "meanEstimate": 0.029975148340794608,
+            "observedFraction": 0.04172560113154172
+          },
+          {
+            "lower": 0.1,
+            "count": 4195,
+            "meanEstimate": 0.13944083464068152,
+            "observedFraction": 0.1699642431466031
+          },
+          {
+            "lower": 0.2,
+            "count": 1184,
+            "meanEstimate": 0.2429223395976665,
+            "observedFraction": 0.28125
+          },
+          {
+            "lower": 0.30000000000000004,
+            "count": 476,
+            "meanEstimate": 0.34386180396394306,
+            "observedFraction": 0.3865546218487395
+          },
+          {
+            "lower": 0.4,
+            "count": 204,
+            "meanEstimate": 0.4415606940844028,
+            "observedFraction": 0.5245098039215687
+          },
+          {
+            "lower": 0.5,
+            "count": 51,
+            "meanEstimate": 0.5315219112133679,
+            "observedFraction": 0.7843137254901961
+          },
+          {
+            "lower": 0.6000000000000001,
+            "count": 30,
+            "meanEstimate": 0.6331585086131587,
+            "observedFraction": 0.9
+          },
+          {
+            "lower": 0.7000000000000001,
+            "count": 7,
+            "meanEstimate": 0.7485041089541452,
+            "observedFraction": 1.0
+          },
+          {
+            "lower": 0.8,
+            "count": 1,
+            "meanEstimate": 0.8012115248722962,
+            "observedFraction": 1.0
+          }
+        ],
+        "prAuc": 0.3156218874411097,
+        "rocAuc": 0.8149568271055653,
+        "brier": 0.06444162263721358,
+        "precision": 0.2966744457409568,
+        "recall": 0.42111801242236024,
+        "threshold": 0.15000000000000002,
+        "positiveWindows": 2415,
+        "windows": 30186
+      },
+      "test": {
+        "calibrationBins": [
+          {
+            "lower": 0.0,
+            "count": 23251,
+            "meanEstimate": 0.0309794344577859,
+            "observedFraction": 0.03427809556578212
+          },
+          {
+            "lower": 0.1,
+            "count": 4117,
+            "meanEstimate": 0.14133933956814265,
+            "observedFraction": 0.15569589506922515
+          },
+          {
+            "lower": 0.2,
+            "count": 1619,
+            "meanEstimate": 0.2425694864164034,
+            "observedFraction": 0.23038912909203213
+          },
+          {
+            "lower": 0.30000000000000004,
+            "count": 668,
+            "meanEstimate": 0.34642416438040374,
+            "observedFraction": 0.32335329341317365
+          },
+          {
+            "lower": 0.4,
+            "count": 361,
+            "meanEstimate": 0.44486247518086197,
+            "observedFraction": 0.4404432132963989
+          },
+          {
+            "lower": 0.5,
+            "count": 155,
+            "meanEstimate": 0.5456987440787593,
+            "observedFraction": 0.5935483870967742
+          },
+          {
+            "lower": 0.6000000000000001,
+            "count": 57,
+            "meanEstimate": 0.6357967241027166,
+            "observedFraction": 0.7192982456140351
+          },
+          {
+            "lower": 0.7000000000000001,
+            "count": 18,
+            "meanEstimate": 0.7396517970507198,
+            "observedFraction": 0.9444444444444444
+          },
+          {
+            "lower": 0.8,
+            "count": 2,
+            "meanEstimate": 0.8071335040888663,
+            "observedFraction": 1.0
+          }
+        ],
+        "prAuc": 0.32050831268573504,
+        "rocAuc": 0.8244498769262927,
+        "brier": 0.06139742477027952,
+        "precision": 0.2715654952076677,
+        "recall": 0.5089820359281437,
+        "threshold": 0.15000000000000002,
+        "positiveWindows": 2338,
+        "windows": 30248,
+        "prAucPatientBootstrap95": [
+          0.27306175415416534,
+          0.358081866439605
+        ]
+      },
+      "events": {
+        "forecastableEpisodes": 334,
+        "episodesWarned": 293,
+        "eventSensitivity": 0.8772455089820359,
+        "deduplicatedAlerts": 1237,
+        "falseAlerts": 944,
+        "falseAlertsPerPatientDay": 2.8095238095238093,
+        "leadTimeMinutes": {
+          "median": 30.0,
+          "min": 15,
+          "max": 105
+        },
+        "cooldownMinutes": 120,
+        "denominatorPatientDays": 336
+      }
+    },
+    "persistence": {
+      "test": {
+        "calibrationBins": [
+          {
+            "lower": 0.0,
+            "count": 30248,
+            "meanEstimate": 0.0,
+            "observedFraction": 0.07729436656969056
+          }
+        ],
+        "prAuc": 0.07729436656969056,
+        "rocAuc": 0.5,
+        "brier": 0.07729436656969056,
+        "precision": 0.0,
+        "recall": 0.0,
+        "threshold": 0.5,
+        "positiveWindows": 2338,
+        "windows": 30248
+      },
+      "events": {
+        "forecastableEpisodes": 334,
+        "episodesWarned": 0,
+        "eventSensitivity": 0.0,
+        "deduplicatedAlerts": 0,
+        "falseAlerts": 0,
+        "falseAlertsPerPatientDay": 0.0,
+        "leadTimeMinutes": {
+          "median": null,
+          "min": null,
+          "max": null
+        },
+        "cooldownMinutes": 120,
+        "denominatorPatientDays": 336
+      }
+    }
+  },
+  "continuous": {
+    "persistence": {
+      "interval90AbsoluteResidualMgDl": [
+        9.79000000000002,
+        17.950000000000003,
+        26.810000000000016,
+        34.78999999999999,
+        40.85000000000001,
+        44.34,
+        46.110000000000014,
+        46.889999999999986
+      ],
+      "intervalMethod": "Per-horizon validation absolute residual 90th percentile; descriptive marginal band, not a clinical confidence interval. Correlated windows violate IID assumptions.",
+      "test": {
+        "30": {
+          "mae": 8.321004363924887,
+          "rmse": 13.650359702268743,
+          "bandCoverage": 0.9038283522877546
+        },
+        "60": {
+          "mae": 13.67319161597461,
+          "rmse": 20.836264852428062,
+          "bandCoverage": 0.9042581327691087
+        },
+        "120": {
+          "mae": 19.553146984924624,
+          "rmse": 26.450802180259835,
+          "bandCoverage": 0.9097460989156307
+        }
+      }
+    },
+    "linearTrend": {
+      "interval90AbsoluteResidualMgDl": [
+        11.441000000000003,
+        24.903999999999996,
+        39.166000000000025,
+        50.60400000000001,
+        58.54499999999999,
+        64.90400000000001,
+        69.77099999999996,
+        75.08200000000002
+      ],
+      "intervalMethod": "Per-horizon validation absolute residual 90th percentile; descriptive marginal band, not a clinical confidence interval. Correlated windows violate IID assumptions.",
+      "test": {
+        "30": {
+          "mae": 9.802735056863265,
+          "rmse": 15.415740314185657,
+          "bandCoverage": 0.9017125099180111
+        },
+        "60": {
+          "mae": 18.578435863528163,
+          "rmse": 27.396343723444527,
+          "bandCoverage": 0.9032663316582915
+        },
+        "120": {
+          "mae": 33.853756744247555,
+          "rmse": 47.16462205991775,
+          "bandCoverage": 0.8996958476593494
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "kind": "falsePositive",
+      "patientId": "synthetic-092",
+      "originIndex": 43,
+      "estimate": 0.16469138247768964,
+      "label": 0,
+      "features": [
+        137.23,
+        -0.17613333333333378,
+        141.06400000000002,
+        4.008004990016857,
+        70.0,
+        16.0,
+        8.8
+      ],
+      "futureActualMgDl": [
+        136.79,
+        133.44,
+        130.62,
+        124.68,
+        126.56,
+        130.17,
+        128.2,
+        138.41
+      ]
+    },
+    {
+      "kind": "missedEventWindow",
+      "patientId": "synthetic-092",
+      "originIndex": 365,
+      "estimate": 0.07946538239654252,
+      "label": 1,
+      "features": [
+        126.95,
+        -0.20413333333333336,
+        132.90000000000003,
+        4.385836294254497,
+        70.0,
+        16.0,
+        8.8
+      ],
+      "futureActualMgDl": [
+        130.48,
+        124.14,
+        162.43,
+        191.41,
+        199.37,
+        196.26,
+        189.07,
+        170.62
+      ]
+    },
+    {
+      "kind": "successfulWarning",
+      "patientId": "synthetic-223",
+      "originIndex": 654,
+      "estimate": 0.1625955060472937,
+      "label": 1,
+      "features": [
+        123.27,
+        -0.038266666666666636,
+        125.06799999999998,
+        2.3479131159393436,
+        71.0,
+        20.0,
+        9.1
+      ],
+      "futureActualMgDl": [
+        127.84,
+        125.44,
+        123.8,
+        153.34,
+        197.4,
+        207.02,
+        204.07,
+        190.48
+      ]
+    }
+  ],
+  "bootstrap": "300 resamples of held-out patients; percentile 95% interval. Synthetic uncertainty only.",
+  "software": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scikitLearn": "1.8.0"
+  },
+  "limitations": [
+    "Synthetic engineering demonstration only; no clinical calibration or real-world accuracy established.",
+    "Static features influence the synthetic generator by design; fusion improvement is not scientific evidence.",
+    "UI traces are selected held-out synthetic illustrations, not representative clinical performance.",
+    "No treatment or dosing recommendations.",
+    "Separate baseline trajectories and logistic episode estimates may disagree; baseline trajectory is not a fused-model forecast."
+  ]
+}

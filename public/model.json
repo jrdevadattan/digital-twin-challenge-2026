@@ -1,0 +1,180 @@
+{
+  "version": "glucotwin-synthetic-logistic-v1",
+  "source": "Synthetic toy generator, seed 20261009. No real patient data.",
+  "features": [
+    "current",
+    "slopePerMinute",
+    "mean60",
+    "std60",
+    "age",
+    "durationYears",
+    "baselineA1c"
+  ],
+  "eventDefinition": "Two consecutive 15-minute values >180 mg/dL among the next eight readings (120 minutes). Current value >180 excluded conservatively. Missing future labels unknown.",
+  "windowPoints": 5,
+  "stepMinutes": 15,
+  "staleAfterMinutes": 30,
+  "models": {
+    "static": {
+      "features": [
+        "age",
+        "durationYears",
+        "baselineA1c"
+      ],
+      "mean": [
+        55.91416285711183,
+        14.453704407501114,
+        7.174562670344109
+      ],
+      "scale": [
+        15.023348590472533,
+        8.943820200831285,
+        0.9489575637015175
+      ],
+      "coefficients": [
+        0.13991352023383768,
+        0.2857761750996022,
+        0.8609668091841872
+      ],
+      "intercept": -3.2812050578627954,
+      "threshold": 0.1
+    },
+    "dynamic": {
+      "features": [
+        "current",
+        "slopePerMinute",
+        "mean60",
+        "std60"
+      ],
+      "mean": [
+        121.14738818368389,
+        -0.024518794407102966,
+        121.78581533884226,
+        5.5003349843991405
+      ],
+      "scale": [
+        20.588500023675604,
+        0.30408379070159697,
+        20.703457962857687,
+        4.874804057675356
+      ],
+      "coefficients": [
+        5.192229124137032,
+        -1.2259340910758978,
+        -3.837925628820974,
+        -1.6015642544037232
+      ],
+      "intercept": -3.6706115649661397,
+      "threshold": 0.15000000000000002
+    },
+    "fused": {
+      "features": [
+        "current",
+        "slopePerMinute",
+        "mean60",
+        "std60",
+        "age",
+        "durationYears",
+        "baselineA1c"
+      ],
+      "mean": [
+        121.14738818368389,
+        -0.024518794407102966,
+        121.78581533884226,
+        5.5003349843991405,
+        55.91416285711183,
+        14.453704407501114,
+        7.174562670344109
+      ],
+      "scale": [
+        20.588500023675604,
+        0.30408379070159697,
+        20.703457962857687,
+        4.874804057675356,
+        15.023348590472533,
+        8.943820200831285,
+        0.9489575637015175
+      ],
+      "coefficients": [
+        4.504838131210053,
+        -1.0569613188604383,
+        -3.614866478985436,
+        -1.2822096184740694,
+        0.031147893849577037,
+        0.23287482406188498,
+        0.577552485404897
+      ],
+      "intercept": -3.754906304276795,
+      "threshold": 0.15000000000000002
+    }
+  },
+  "continuous": {
+    "persistence": {
+      "interval90AbsoluteResidualMgDl": [
+        9.79000000000002,
+        17.950000000000003,
+        26.810000000000016,
+        34.78999999999999,
+        40.85000000000001,
+        44.34,
+        46.110000000000014,
+        46.889999999999986
+      ],
+      "intervalMethod": "Per-horizon validation absolute residual 90th percentile; descriptive marginal band, not a clinical confidence interval. Correlated windows violate IID assumptions.",
+      "test": {
+        "30": {
+          "mae": 8.321004363924887,
+          "rmse": 13.650359702268743,
+          "bandCoverage": 0.9038283522877546
+        },
+        "60": {
+          "mae": 13.67319161597461,
+          "rmse": 20.836264852428062,
+          "bandCoverage": 0.9042581327691087
+        },
+        "120": {
+          "mae": 19.553146984924624,
+          "rmse": 26.450802180259835,
+          "bandCoverage": 0.9097460989156307
+        }
+      }
+    },
+    "linearTrend": {
+      "interval90AbsoluteResidualMgDl": [
+        11.441000000000003,
+        24.903999999999996,
+        39.166000000000025,
+        50.60400000000001,
+        58.54499999999999,
+        64.90400000000001,
+        69.77099999999996,
+        75.08200000000002
+      ],
+      "intervalMethod": "Per-horizon validation absolute residual 90th percentile; descriptive marginal band, not a clinical confidence interval. Correlated windows violate IID assumptions.",
+      "test": {
+        "30": {
+          "mae": 9.802735056863265,
+          "rmse": 15.415740314185657,
+          "bandCoverage": 0.9017125099180111
+        },
+        "60": {
+          "mae": 18.578435863528163,
+          "rmse": 27.396343723444527,
+          "bandCoverage": 0.9032663316582915
+        },
+        "120": {
+          "mae": 33.853756744247555,
+          "rmse": 47.16462205991775,
+          "bandCoverage": 0.8996958476593494
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Synthetic engineering demonstration only; no clinical calibration or real-world accuracy established.",
+    "Static features influence the synthetic generator by design; fusion improvement is not scientific evidence.",
+    "UI traces are selected held-out synthetic illustrations, not representative clinical performance.",
+    "No treatment or dosing recommendations.",
+    "Separate baseline trajectories and logistic episode estimates may disagree; baseline trajectory is not a fused-model forecast."
+  ]
+}
