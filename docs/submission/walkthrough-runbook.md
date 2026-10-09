@@ -1,8 +1,8 @@
-# GlucoTwin: 23-minute walkthrough runbook
+# GlucoTwin: 20-minute walkthrough runbook
 
 Team dev. J R Deva Dattan, Army Institute of Technology, Pune.
 
-This is a recording plan, not a completed video. The timing includes live interaction, reading the displayed evidence, and short pauses. Reading the narration alone will run short. Rehearse with a stopwatch, record the working app, then verify that the exported video is between 22 and 24 minutes and remains above the required 20-minute minimum. Never extend the duration with a frozen title screen or repeated footage.
+This is a recording plan, not a completed video. The timing includes live interaction, reading the displayed evidence, and short pauses. Reading the narration alone will run short. Rehearse with a stopwatch, record the working app, then verify that the exported video is exactly 20:00. The verified submission form specifies 15-20 minutes and an unlisted YouTube link, while the public listing says at least 20 minutes. Exactly 20:00 is the common boundary. Never extend the duration with a frozen title screen or repeated footage.
 
 ## Before recording
 
@@ -12,9 +12,9 @@ Run the project's current test and build commands. Open the app at its verified 
 
 Keep the following files open in a safe editor: public/model-evidence.json, model/real-benchmark-evidence.json, model/README.md, model/REAL_BENCHMARK.md, LICENSE, and docs/CONTRIBUTIONS.md. Open only aggregate real evidence. Do not show raw records or person IDs from the real dataset. Save a recording copy before editing.
 
-## 00:00-01:30 | Introduction and scope
+## 00:00-01:15 | Introduction and scope
 
-Show slides 1 and 2. Spend about 45 seconds on each. Explain the proposed reviewer workflow without claiming a clinician study.
+Show slides 1 and 2. Spend about 35 seconds on each. Explain the proposed reviewer workflow without claiming a clinician study.
 
 Narration: “I'm J R Deva Dattan from Team dev at Army Institute of Technology, Pune. GlucoTwin is a research workspace for inspecting a two-hour glucose event estimate. Every patient you will see in the app is fictional. It is not intended for clinical decisions.
 
@@ -22,7 +22,7 @@ Narration: “I'm J R Deva Dattan from Team dev at Army Institute of Technology,
 
 “I'll show the working replay first, including a false positive and a missed episode. Then I'll separate the synthetic engineering results from a small retrospective benchmark on public research data. The real benchmark exposes a substantial false-alert burden and only a very small difference between fused and glucose-only models.”
 
-## 01:30-03:00 | Exact outcome
+## 01:15-02:30 | Exact outcome
 
 Show slide 3. Point at the 120-minute horizon and read the event definition. Explain the boundary using 12:00 as an example: candidate observations are 12:15 through 14:00. Two high readings must both fall in that interval.
 
@@ -32,7 +32,7 @@ Narration: “Our target is two consecutive readings strictly above 180 milligra
 
 During the remaining time, explain why a high current observation differs from a forecast of a future event. Advance to slide 4 only after the example is clear.
 
-## 03:00-04:45 | Data separation and timing
+## 02:30-04:00 | Data separation and timing
 
 Show slide 4, then the source and limitation paragraphs in model/REAL_BENCHMARK.md. Keep the source DOI visible.
 
@@ -44,7 +44,7 @@ Narration: “There are two evidence streams. The browser runs a model trained o
 
 Point to CC BY 4.0 and the modification notice. Explain that code licensing does not change data licensing. Do not scroll to any raw data location or open a workbook.
 
-## 04:45-07:15 | First snapshot and the two outputs
+## 04:00-06:10 | First snapshot and the two outputs
 
 Switch to the app's Twin overview. Select Ananya Rao, GT-001, and reset. At 12:00 IST the expected fixture is 142.58 mg/dL, baseline HbA1c 8.8%, age 70, and a synthetic event estimate near 40%. Read only values actually shown.
 
@@ -56,7 +56,7 @@ Narration: “This is a fictional profile selected from held-out synthetic examp
 
 Spend the remaining time pointing out forecast origin, end time, units, model label, sensor freshness, and the chart legend. Open Provenance, read the available inputs, then return to Twin overview. Move slowly enough that a viewer can read each panel.
 
-## 07:15-09:45 | Replay and observed outcome
+## 06:10-08:20 | Replay and observed outcome
 
 Stay on GT-001. Use “Advance 15 minutes” several times, pausing on each updated timestamp. Briefly show Play, Pause, and the speed selector. Return to step-by-step progression before 13:00.
 
@@ -68,7 +68,7 @@ Narration: “This is the selected successful-warning illustration. It shows one
 
 Mark one snapshot reviewed if available. Add the synthetic note “Demo review: inspected inputs and replay outcome.” Open Review history to show the session entry. Explain that no message or clinical action was sent. Return to overview and reset.
 
-## 09:45-12:15 | False positive and missed episode
+## 08:20-10:30 | False positive and missed episode
 
 Select Vikram Shah, GT-002. Selection returns to 12:00. The fixture starts near 35% estimate with current glucose 165.96. Advance to 14:00, pausing near 12:30 when a single reading reaches 186.47. Show that the adjacent readings stay below 180, so the defined two-reading event does not occur in this horizon.
 
@@ -80,7 +80,7 @@ Narration: “This selected case is a genuinely missed synthetic episode. The el
 
 If time remains, select Arjun Nair, GT-004, and briefly show the lower-estimate negative illustration. Do not describe it as a clinically safe patient.
 
-## 12:15-14:15 | Missing data and rejected inputs
+## 10:30-12:15 | Missing data and rejected inputs
 
 Return to GT-001 and reset. Choose Sensor dropout. Point to the unavailable estimate and missing forecast. Then choose Cold start, Invalid units, and Disconnected feed, allowing the viewer to read each reason. Return to Patient scenario at the end.
 
@@ -90,7 +90,7 @@ Narration: “The prototype withholds its forecast when the feed is stale. Its 3
 
 Use the time slider to show a starting point with insufficient history and then restore 12:00. Explain that the status text and forecast must agree. Avoid implying that the scenario dropdown itself validates real hardware.
 
-## 14:15-16:00 | Architecture and reproducibility
+## 12:15-13:50 | Architecture and reproducibility
 
 Show slide 6 and the architecture PDF. Trace the browser path in order. Then show the repository structure and current startup/test commands without displaying secrets or private folders.
 
@@ -102,7 +102,7 @@ Narration: “The running app is a React and TypeScript application built with V
 
 Allow 30 seconds to inspect the actual file paths and version fields. Do not claim a test run passed unless the recorded command or verified report shows it.
 
-## 16:00-18:00 | Synthetic evidence
+## 13:50-15:35 | Synthetic evidence
 
 Show slide 8 and the Model evidence tab or public/model-evidence.json. Read the split counts, common test denominator, and all four PR-AUC values. Explain average precision and prevalence briefly.
 
@@ -114,7 +114,7 @@ Narration: “The synthetic evaluation includes 240 people, split 144 for traini
 
 Show the continuous-model results: 120-minute persistence MAE 19.55 mg/dL versus 33.85 for the clipped linear trend. Explain why the app defaults to persistence.
 
-## 18:00-20:15 | Real benchmark and uncertainty
+## 15:35-17:35 | Real benchmark and uncertainty
 
 Show slides 9 and 10, followed by the aggregate real evidence file. Keep the paired interval and false-alert figure visible together during the explanation.
 
@@ -126,7 +126,7 @@ Narration: “The real feasibility study has 60 training, 20 validation, and 20 
 
 Spend the remaining time pointing to the actual denominator, bootstrap protocol, and excluded features. The displayed real metrics must never be called the browser model's test results.
 
-## 20:15-21:45 | Limits, privacy, and next validation
+## 17:35-18:55 | Limits, privacy, and next validation
 
 Show slide 11. Return briefly to the unavailable-state UI if useful.
 
@@ -136,7 +136,7 @@ Narration: “Before clinical use, this would need independent local validation,
 
 Use the remaining time to distinguish a software quality check from clinical validation and a synthetic illustration from a representative test cohort. Keep the explanation tied to what the viewer just saw.
 
-## 21:45-23:00 | Licensing, disclosure, and close
+## 18:55-20:00 | Licensing, disclosure, and close
 
 Show slide 12, LICENSE, and the contribution disclosure. Show only the approved release repository link if publication has actually happened. Otherwise show the local public-safe project folder without claiming it is public.
 
@@ -146,8 +146,8 @@ Narration: “Original project code uses the MIT license. Dependencies retain th
 
 “GlucoTwin demonstrates an inspectable synthetic replay, working event inference, explicit unavailable states, and reproducible evidence. The real benchmark shows a small, uncertain fusion difference and a false-alert burden that needs further research. The repository includes the commands and model cards needed to examine those results.”
 
-End at approximately 23:00 after showing the verified artifact names. Do not announce registration, submission, deployment, or acceptance unless each has been independently confirmed.
+End at exactly 20:00 after showing the verified artifact names. Do not announce registration, submission, deployment, or acceptance unless each has been independently confirmed.
 
 ## After recording
 
-Check the actual exported duration with a media probe. Watch the full video once, including the beginning and end, with sound. Verify legible UI, correct values, functioning controls, and no private material. Make sure the successful warning, false positive, missed episode, and missing-data states all appear. Verify that the real and synthetic evidence remain clearly separated. Upload only after the authorized destination and final platform requirements are known, and verify that the intended reviewers can play it. A script, slideshow render, or unplayed media file is not proof of a completed working-product walkthrough.
+Check the actual exported duration of exactly 20:00 with a media probe. Host the approved video as unlisted on YouTube and include the verified link in the project README. Watch the full video once, including the beginning and end, with sound. Verify legible UI, correct values, functioning controls, and no private material. Make sure the successful warning, false positive, missed episode, and missing-data states all appear. Verify that the real and synthetic evidence remain clearly separated. Upload only after the authorized destination and final platform requirements are known, and verify that the intended reviewers can play it. A script, slideshow render, or unplayed media file is not proof of a completed working-product walkthrough.

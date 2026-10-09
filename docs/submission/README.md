@@ -5,9 +5,9 @@ GlucoTwin, Team dev. J R Deva Dattan, Army Institute of Technology, Pune.
 ## Files
 
 - `../../artifacts/submission/GlucoTwin-presentation.pptx`: 12-slide editable presentation, with source notes and editable evidence charts.
-- `../../artifacts/submission/GlucoTwin-presentation.pdf`: PDF version of the same slides.
+- An optional PDF version of the slides is prepared locally; its repository upload is pending. The PPTX above satisfies the presentation-format requirement.
 - `../../artifacts/submission/GlucoTwin-architecture.pdf`: three-page architecture, pipeline, and safety-boundary document.
-- `walkthrough-runbook.md`: timed 23-minute narration and live-demo plan. It is not a video.
+- `walkthrough-runbook.md`: timed 20-minute narration and live-demo plan. It is not a video.
 - `slide-notes.md`: source references accompanying the deck.
 
 ## Project description
@@ -22,4 +22,4 @@ Original code uses MIT. The ShanghaiT2DM data retain CC BY 4.0 attribution. Subs
 
 ## Before submitting
 
-Check current organizer requirements, registration status, and authorship attestations. Recheck the final app after UI changes. Record and watch the actual 22-24-minute walkthrough, including all failure cases, then verify its exported duration and reviewer access. Inspect the approved release for private data and credentials. Confirm final repository and video links from actual published destinations. These documents do not establish that registration, publication, video recording, or platform submission has occurred.
+Check current organizer requirements, registration status, and authorship attestations. Recheck the final app after UI changes. Record and watch the actual 20:00 walkthrough, including all failure cases, then verify its exported duration and reviewer access. The submission form requires 15-20 minutes and an unlisted YouTube link in the README, while the listing requires at least 20 minutes; exactly 20:00 meets their common boundary. Inspect the approved release for private data and credentials. Confirm final repository and video links from actual published destinations. These documents do not establish that registration, publication, video recording, or platform submission has occurred.

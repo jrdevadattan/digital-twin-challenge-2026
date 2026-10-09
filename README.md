@@ -2,9 +2,15 @@
 
 **Research prototype · Synthetic demo · Not for clinical decisions.**
 
-A clinician-facing Type 2 diabetes digital-twin research workspace with timestamped fictional profiles, causal sensor replay, an actual trained static-plus-dynamic event model, descriptive uncertainty and inspectable evidence.
+A clinician-facing Type 2 diabetes digital-twin research workspace with timestamped fictional profiles, causal sensor replay, a trained static-plus-dynamic event model, descriptive uncertainty and inspectable evidence.
 
-This repository is private during development. No public deployment or challenge submission is authorized yet. Team and college details, presentation, architecture deck and ≥20-minute walkthrough must be completed before submission.
+Team: **dev**. Author: **J R Deva Dattan**. College: **Army Institute of Technology, Pune**.
+
+Registration is complete for solo Team dev. The repository remains private while the submission package is completed. The PPTX and architecture PDF are available under `artifacts/submission/`. The actual 20:00 walkthrough, its unlisted YouTube link and final platform submission are still pending.
+
+The submission form requires a 15–20-minute video, while the public listing specifies at least 20 minutes. The recording target is exactly 20:00; its verified YouTube link will be added here before submission.
+
+Stack: React 19, TypeScript, Vite, shadcn/ui with Radix primitives, Tailwind CSS, Lucide icons, Python and scikit-learn. The runtime is a static browser app with local inference.
 
 ## Start
 
