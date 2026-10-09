@@ -1,0 +1,1771 @@
+1
+00:00:00,000 --> 00:00:04,965
+This is GlucoTwin, presented for J R Deva
+Dattan of Team dev at Army Institute of
+
+2
+00:00:04,965 --> 00:00:06,007
+Technology, Pune.
+
+3
+00:00:06,129 --> 00:00:10,038
+GlucoTwin is a research workspace for
+inspecting a two-hour glucose event
+
+4
+00:00:10,038 --> 00:00:10,520
+estimate.
+
+5
+00:00:10,642 --> 00:00:12,789
+Every patient you will see in the app is
+fictional.
+
+6
+00:00:12,911 --> 00:00:15,123
+It is not intended for clinical decisions.
+
+7
+00:00:15,245 --> 00:00:19,167
+The question behind this prototype is simple:
+when a glucose reading changes, can
+
+8
+00:00:19,167 --> 00:00:23,138
+a reviewer see what information produced the
+estimate and whether that information
+
+9
+00:00:23,138 --> 00:00:23,912
+is still usable?
+
+10
+00:00:24,035 --> 00:00:28,260
+The interface brings the current snapshot,
+model output, and its evidence into the
+
+11
+00:00:28,260 --> 00:00:29,136
+same review flow.
+
+12
+00:00:29,258 --> 00:00:31,478
+This is a proposed clinician-facing workflow.
+
+13
+00:00:31,600 --> 00:00:34,783
+We haven't conducted clinician interviews or a
+usability study.
+
+14
+00:00:34,905 --> 00:00:38,667
+I'll show the working replay first, including
+a false positive and a missed
+
+15
+00:00:38,667 --> 00:00:39,068
+episode.
+
+16
+00:00:39,190 --> 00:00:43,555
+Then I'll separate the synthetic engineering
+results from a small retrospective
+
+17
+00:00:43,555 --> 00:00:45,433
+benchmark on public research data.
+
+18
+00:00:45,556 --> 00:00:49,888
+The real benchmark exposes a substantial
+false-alert burden and only a very small
+
+19
+00:00:49,888 --> 00:00:52,509
+difference between fused and glucose-only
+models.
+
+20
+00:00:52,632 --> 00:00:56,339
+A useful research demonstration should make
+three kinds of evidence easy to
+
+21
+00:00:56,339 --> 00:00:56,933
+distinguish.
+
+22
+00:00:57,055 --> 00:01:01,309
+The first is software behavior: whether the
+application performs the operations
+
+23
+00:01:01,309 --> 00:01:02,548
+its interface promises.
+
+24
+00:01:02,670 --> 00:01:05,698
+The second is statistical performance on a
+held out dataset.
+
+25
+00:01:05,820 --> 00:01:09,542
+The third is evidence that the workflow
+actually helps clinicians or patients.
+
+26
+00:01:09,664 --> 00:01:13,537
+This project supplies a working software
+prototype and a limited statistical
+
+27
+00:01:13,537 --> 00:01:13,843
+study.
+
+28
+00:01:13,965 --> 00:01:16,079
+It does not supply the third kind of evidence.
+
+29
+00:01:16,201 --> 00:01:18,731
+That distinction shapes the entire
+presentation.
+
+30
+00:01:18,854 --> 00:01:22,950
+We will look at both favorable and unfavorable
+cases, and we will keep the false
+
+31
+00:01:22,950 --> 00:01:25,562
+alert burden visible alongside successful
+warnings.
+
+32
+00:01:25,685 --> 00:01:27,284
+The goal is inspectability.
+
+33
+00:01:27,407 --> 00:01:31,335
+A reviewer should be able to determine the
+forecast origin, the inputs, the event
+
+34
+00:01:31,335 --> 00:01:34,099
+definition, and the limitations without
+needing to guess.
+
+35
+00:01:34,221 --> 00:01:38,137
+All names and glucose traces in the
+interactive application are synthetic
+
+36
+00:01:38,137 --> 00:01:38,620
+fixtures.
+
+37
+00:01:38,742 --> 00:01:43,109
+This presentation uses a stock computer
+generated narration voice and captions.
+
+38
+00:01:43,231 --> 00:01:46,275
+It does not reproduce or impersonate the
+participant's voice.
+
+39
+00:01:46,398 --> 00:01:51,669
+Our target is two consecutive readings
+strictly above 180 milligrams per deciliter
+
+40
+00:01:51,669 --> 00:01:53,212
+in the next 120 minutes.
+
+41
+00:01:53,335 --> 00:01:55,277
+Samples arrive every 15 minutes.
+
+42
+00:01:55,400 --> 00:01:59,513
+Two readings span 15 minutes; we do not
+describe that as 30 minutes above range.
+
+43
+00:01:59,635 --> 00:02:04,145
+A current reading above 180 suppresses a new-
+event estimate, even if it is only a
+
+44
+00:02:04,145 --> 00:02:05,258
+single high reading.
+
+45
+00:02:05,381 --> 00:02:07,380
+That is a conservative project choice.
+
+46
+00:02:07,503 --> 00:02:10,996
+Missing future samples make the outcome
+unknown, rather than negative.
+
+47
+00:02:11,118 --> 00:02:13,632
+These choices are part of the benchmark
+definition.
+
+48
+00:02:13,754 --> 00:02:18,078
+The threshold has time-in-range literature
+behind it, but this particular episode
+
+49
+00:02:18,078 --> 00:02:18,985
+protocol is ours.
+
+50
+00:02:19,108 --> 00:02:22,054
+It is not an emergency definition or a
+treatment trigger.
+
+51
+00:02:22,176 --> 00:02:24,160
+Consider the origin at twelve o'clock.
+
+52
+00:02:24,282 --> 00:02:28,086
+A value measured at twelve o'clock belongs to
+the information available to the
+
+53
+00:02:28,086 --> 00:02:28,379
+model.
+
+54
+00:02:28,501 --> 00:02:30,738
+It is not one of the future outcome readings.
+
+55
+00:02:30,860 --> 00:02:34,337
+The future window starts with twelve fifteen
+and ends with fourteen hundred.
+
+56
+00:02:34,459 --> 00:02:38,472
+Suppose the readings at thirteen fifteen and
+thirteen thirty are both above one
+
+57
+00:02:38,472 --> 00:02:39,437
+hundred and eighty.
+
+58
+00:02:39,560 --> 00:02:41,747
+They form a positive event for this origin.
+
+59
+00:02:41,869 --> 00:02:45,957
+If only the thirteen fifteen reading is above
+the threshold, with both neighboring
+
+60
+00:02:45,957 --> 00:02:49,296
+readings below it, the same origin is negative
+under this protocol.
+
+61
+00:02:49,419 --> 00:02:53,206
+A reading exactly equal to one hundred and
+eighty is not strictly above the
+
+62
+00:02:53,206 --> 00:02:53,711
+threshold.
+
+63
+00:02:53,834 --> 00:02:57,874
+These boundary conditions matter because small
+changes in labeling can change
+
+64
+00:02:57,874 --> 00:02:58,975
+reported performance.
+
+65
+00:02:59,098 --> 00:03:02,395
+They also matter when explaining why a warning
+was counted as false.
+
+66
+00:03:02,517 --> 00:03:06,531
+We do not retrospectively redefine the outcome
+to make a selected example look
+
+67
+00:03:06,531 --> 00:03:06,892
+better.
+
+68
+00:03:07,014 --> 00:03:08,434
+There are two evidence streams.
+
+69
+00:03:08,557 --> 00:03:12,294
+The browser runs a model trained on a
+deterministic synthetic generator.
+
+70
+00:03:12,417 --> 00:03:15,453
+That generator uses static patient context by
+design.
+
+71
+00:03:15,575 --> 00:03:19,569
+Better fusion results on it demonstrate that
+the software can combine the inputs;
+
+72
+00:03:19,569 --> 00:03:21,590
+they cannot establish a clinical benefit.
+
+73
+00:03:21,712 --> 00:03:27,197
+The separate ShanghaiT2DM feasibility
+benchmark covers 100 adults and 109
+
+74
+00:03:27,197 --> 00:03:28,625
+recording sessions.
+
+75
+00:03:28,747 --> 00:03:31,277
+We retain every session for a person in one
+split.
+
+76
+00:03:31,400 --> 00:03:34,215
+Its static inputs are age and source-recorded
+gender.
+
+77
+00:03:34,338 --> 00:03:38,453
+We assume these were available at enrollment,
+but their exact prospective timing
+
+78
+00:03:38,453 --> 00:03:39,945
+isn't independently verified.
+
+79
+00:03:40,067 --> 00:03:43,989
+The source paper allows some laboratory
+measurements months before or after the
+
+80
+00:03:43,989 --> 00:03:44,833
+sensor recording.
+
+81
+00:03:44,956 --> 00:03:49,361
+We therefore exclude all undated labs, along
+with treatment history and outcome-
+
+82
+00:03:49,361 --> 00:03:50,628
+derived summary fields.
+
+83
+00:03:50,750 --> 00:03:53,753
+Real data stay outside the public app and
+repository.
+
+84
+00:03:53,876 --> 00:03:58,498
+The browser's fictional HbA1c fixture is dated
+before replay and has no connection
+
+85
+00:03:58,498 --> 00:03:59,964
+to a Shanghai participant.
+
+86
+00:04:00,087 --> 00:04:03,844
+The distinction between the two evidence
+streams also determines what may be
+
+87
+00:04:03,844 --> 00:04:05,179
+inferred from a comparison.
+
+88
+00:04:05,302 --> 00:04:08,574
+Synthetic data are valuable for controlled
+engineering checks.
+
+89
+00:04:08,697 --> 00:04:13,194
+They let us exercise reproducible histories,
+known failure states, and code paths
+
+90
+00:04:13,194 --> 00:04:15,470
+without exposing a real person's records.
+
+91
+00:04:15,593 --> 00:04:19,404
+But a relationship written into the generator
+can be learned by a model without
+
+92
+00:04:19,404 --> 00:04:22,636
+proving that it exists with the same strength
+in clinical practice.
+
+93
+00:04:22,758 --> 00:04:26,694
+The real benchmark provides a separate
+feasibility check, rather than a hidden
+
+94
+00:04:26,694 --> 00:04:28,308
+replacement for the app's model.
+
+95
+00:04:28,430 --> 00:04:31,572
+The two pipelines have different features and
+history requirements.
+
+96
+00:04:31,695 --> 00:04:33,703
+Their percentages should not be exchanged.
+
+97
+00:04:33,825 --> 00:04:37,571
+Grouping all recording sessions for the same
+person prevents a person's second
+
+98
+00:04:37,571 --> 00:04:41,268
+session from appearing in a test split while
+their first session was used for
+
+99
+00:04:41,268 --> 00:04:41,701
+training.
+
+100
+00:04:41,823 --> 00:04:46,232
+This removes one important leakage route,
+although it cannot resolve every concern
+
+101
+00:04:46,232 --> 00:04:49,780
+about retrospective data quality or population
+representativeness.
+
+102
+00:04:49,903 --> 00:04:53,534
+This is a fictional profile selected from
+held-out synthetic examples.
+
+103
+00:04:53,657 --> 00:04:55,436
+The timestamp is simulated time.
+
+104
+00:04:55,558 --> 00:04:58,611
+The estimate uses the observations available
+at that moment.
+
+105
+00:04:58,733 --> 00:05:02,702
+Future readings are present in the replay
+fixture but stay hidden from inference
+
+106
+00:05:02,702 --> 00:05:04,389
+and the chart until we reach them.
+
+107
+00:05:04,511 --> 00:05:08,282
+The percentage on the right is the logistic
+event model's synthetic estimate.
+
+108
+00:05:08,404 --> 00:05:12,409
+The line extending into the future is a
+separate persistence baseline: it holds
+
+109
+00:05:12,409 --> 00:05:14,133
+the latest glucose value constant.
+
+110
+00:05:14,256 --> 00:05:17,438
+The shaded band uses validation absolute
+residuals.
+
+111
+00:05:17,561 --> 00:05:21,973
+It describes uncertainty under the synthetic
+benchmark, without promising coverage
+
+112
+00:05:21,973 --> 00:05:23,372
+for an individual patient.
+
+113
+00:05:23,494 --> 00:05:26,555
+These two outputs answer different questions
+and can disagree.
+
+114
+00:05:26,677 --> 00:05:31,032
+A flat persistence line can coexist with a
+higher event estimate because the
+
+115
+00:05:31,032 --> 00:05:34,528
+logistic model also uses recent variation and
+static context.
+
+116
+00:05:34,650 --> 00:05:39,025
+We make that separation explicit rather than
+implying the chart is a trajectory
+
+117
+00:05:39,025 --> 00:05:40,576
+generated by the classifier.
+
+118
+00:05:40,698 --> 00:05:43,334
+Read this screen from left to right as a
+review task.
+
+119
+00:05:43,456 --> 00:05:47,007
+Start with the identity of the fictional
+fixture and the replay timestamp.
+
+120
+00:05:47,129 --> 00:05:49,667
+Then check the current glucose value and its
+units.
+
+121
+00:05:49,790 --> 00:05:52,564
+Check whether the feed status says the data
+are fresh enough.
+
+122
+00:05:52,687 --> 00:05:55,364
+Only after those checks should you inspect the
+model output.
+
+123
+00:05:55,486 --> 00:05:59,748
+The provenance panel provides another level of
+inspection: which context belongs
+
+124
+00:05:59,748 --> 00:06:03,903
+to this fixture, what observations were
+available, and what model artifact was
+
+125
+00:06:03,903 --> 00:06:04,170
+used.
+
+126
+00:06:04,292 --> 00:06:08,488
+The current estimate is a model score
+expressed as a percentage under a synthetic
+
+127
+00:06:08,488 --> 00:06:09,058
+experiment.
+
+128
+00:06:09,181 --> 00:06:12,771
+It should not be interpreted as a calibrated
+personal medical probability.
+
+129
+00:06:12,894 --> 00:06:16,950
+Likewise, the shaded trajectory band is a
+descriptive residual based band.
+
+130
+00:06:17,072 --> 00:06:21,178
+A viewer should not assume that every future
+point for an individual falls inside
+
+131
+00:06:21,178 --> 00:06:22,851
+it with a guaranteed probability.
+
+132
+00:06:22,973 --> 00:06:27,209
+Separating labels, units, and output meanings
+is part of making a numerical
+
+133
+00:06:27,209 --> 00:06:28,678
+interface less misleading.
+
+134
+00:06:28,800 --> 00:06:31,314
+Advancing fifteen minutes adds one
+observation.
+
+135
+00:06:31,436 --> 00:06:35,571
+The current value and last-hour statistics
+change, so the event estimate changes
+
+136
+00:06:35,571 --> 00:06:35,778
+too.
+
+137
+00:06:35,900 --> 00:06:38,128
+The future actual trace doesn't appear early.
+
+138
+00:06:38,251 --> 00:06:42,206
+Reset and the time slider make this
+demonstration repeatable, although moving
+
+139
+00:06:42,206 --> 00:06:45,596
+backwards is a replay convenience rather than
+a clinical workflow.
+
+140
+00:06:45,718 --> 00:06:48,371
+This is the selected successful-warning
+illustration.
+
+141
+00:06:48,493 --> 00:06:50,550
+It shows one outcome that followed a warning.
+
+142
+00:06:50,672 --> 00:06:52,974
+It does not represent the overall success
+rate.
+
+143
+00:06:53,096 --> 00:06:57,248
+Once the current value is already above range,
+the interface treats that as an
+
+144
+00:06:57,248 --> 00:07:00,335
+observation and stops presenting it as advance
+prediction.
+
+145
+00:07:00,457 --> 00:07:03,273
+Demo review: inspected inputs and replay
+outcome.
+
+146
+00:07:03,395 --> 00:07:05,362
+The replay is deliberately observable.
+
+147
+00:07:05,485 --> 00:07:09,485
+At each step, the current measurement becomes
+part of the past, the forecast
+
+148
+00:07:09,485 --> 00:07:12,275
+origin advances, and the input summary is
+recomputed.
+
+149
+00:07:12,397 --> 00:07:16,301
+The presence of future readings inside the
+fixture file does not make them valid
+
+150
+00:07:16,301 --> 00:07:17,131
+inference inputs.
+
+151
+00:07:17,253 --> 00:07:21,269
+The engineering requirement is to restrict the
+calculation to the chosen origin.
+
+152
+00:07:21,391 --> 00:07:24,961
+When the replay reaches the first high
+measurement, a new event estimate is
+
+153
+00:07:24,961 --> 00:07:28,483
+withheld because the current reading is
+already above the event threshold.
+
+154
+00:07:28,605 --> 00:07:32,783
+That behavior should not be confused with the
+model changing its mind about the
+
+155
+00:07:32,783 --> 00:07:33,682
+earlier forecast.
+
+156
+00:07:33,804 --> 00:07:37,264
+The earlier forecast had its own origin and
+its own future window.
+
+157
+00:07:37,387 --> 00:07:41,280
+A review note is merely a local session
+annotation for this demonstration.
+
+158
+00:07:41,402 --> 00:07:45,116
+Marking a snapshot reviewed does not imply a
+clinician approved it, that a
+
+159
+00:07:45,116 --> 00:07:48,829
+treatment was recommended, or that any
+notification was sent to a patient.
+
+160
+00:07:48,951 --> 00:07:52,795
+The distinction between observing,
+forecasting, and acting remains explicit.
+
+161
+00:07:52,918 --> 00:07:55,880
+This warning is a false positive under our
+exact label.
+
+162
+00:07:56,003 --> 00:07:59,907
+A single high reading is visible, but the
+required pair never forms in this
+
+163
+00:07:59,907 --> 00:08:00,271
+window.
+
+164
+00:08:00,393 --> 00:08:04,319
+Changing the event definition after seeing
+this example would change the task.
+
+165
+00:08:04,441 --> 00:08:05,976
+We keep the definition fixed.
+
+166
+00:08:06,098 --> 00:08:09,330
+This selected case is a genuinely missed
+synthetic episode.
+
+167
+00:08:09,452 --> 00:08:12,937
+The eligible warning origins stay below the
+threshold before onset.
+
+168
+00:08:13,060 --> 00:08:17,328
+A low model estimate should never be read as a
+guarantee that no event will occur.
+
+169
+00:08:17,450 --> 00:08:21,474
+These examples were selected after aggregate
+evaluation to show behavior.
+
+170
+00:08:21,596 --> 00:08:24,379
+They were not used to train the model or
+select its threshold.
+
+171
+00:08:24,502 --> 00:08:27,970
+The false positive and missed event make
+different limitations tangible.
+
+172
+00:08:28,093 --> 00:08:32,470
+A false positive consumes attention even when
+its displayed score is below fifty
+
+173
+00:08:32,470 --> 00:08:32,908
+percent.
+
+174
+00:08:33,030 --> 00:08:37,482
+An alerting rule can use a low threshold when
+recall is prioritized, so a warning
+
+175
+00:08:37,482 --> 00:08:41,330
+is not the same as a prediction that an event
+is more likely than not.
+
+176
+00:08:41,452 --> 00:08:45,149
+Conversely, a low score can precede a real
+event under the chosen label.
+
+177
+00:08:45,272 --> 00:08:49,115
+The missed example is useful because it
+prevents the dashboard from presenting a
+
+178
+00:08:49,115 --> 00:08:50,797
+reassuring percentage as certainty.
+
+179
+00:08:50,919 --> 00:08:55,158
+These cases are illustrations selected from
+held out synthetic examples after
+
+180
+00:08:55,158 --> 00:08:56,314
+aggregate evaluation.
+
+181
+00:08:56,436 --> 00:08:58,689
+They do not provide a new estimate of
+accuracy.
+
+182
+00:08:58,811 --> 00:09:02,918
+A few visually memorable examples can easily
+distort intuition, which is why the
+
+183
+00:09:02,918 --> 00:09:05,895
+aggregate metrics later in this walkthrough
+are essential.
+
+184
+00:09:06,018 --> 00:09:10,310
+The same fixed event definition must be
+applied to the successful warning, false
+
+185
+00:09:10,310 --> 00:09:11,812
+warning, and missed episode.
+
+186
+00:09:11,935 --> 00:09:13,918
+Otherwise the comparison would be unfair.
+
+187
+00:09:14,040 --> 00:09:16,864
+The prototype withholds its forecast when the
+feed is stale.
+
+188
+00:09:16,986 --> 00:09:19,957
+Its 30-minute freshness limit is an
+engineering policy.
+
+189
+00:09:20,079 --> 00:09:21,565
+It isn't a clinical standard.
+
+190
+00:09:21,687 --> 00:09:25,826
+Cold start, invalid units, and a disconnected
+feed also produce explicit
+
+191
+00:09:25,826 --> 00:09:26,919
+unavailable states.
+
+192
+00:09:27,041 --> 00:09:30,966
+The screen must not turn missing information
+into a reassuring low percentage.
+
+193
+00:09:31,089 --> 00:09:34,672
+The interface requires nine observations
+before showing its forecast.
+
+194
+00:09:34,794 --> 00:09:39,473
+The synthetic training eligibility uses at
+least five contiguous observations, and
+
+195
+00:09:39,473 --> 00:09:41,241
+the real benchmark requires 24.
+
+196
+00:09:41,364 --> 00:09:44,890
+Those are separate contracts, and the
+documentation records the difference.
+
+197
+00:09:45,012 --> 00:09:49,337
+We test input order, gaps, units, and export
+parity in the model and browser code.
+
+198
+00:09:49,460 --> 00:09:53,615
+These scenario controls demonstrate selected
+failure states; they are not a live
+
+199
+00:09:53,615 --> 00:09:54,601
+sensor integration.
+
+200
+00:09:54,724 --> 00:09:57,286
+An unavailable output is an important result.
+
+201
+00:09:57,409 --> 00:10:01,642
+It tells the reviewer that the system cannot
+support the requested computation
+
+202
+00:10:01,642 --> 00:10:02,999
+under its input contract.
+
+203
+00:10:03,122 --> 00:10:07,438
+Sensor dropout and disconnection are related
+but distinct: a connection may appear
+
+204
+00:10:07,438 --> 00:10:10,385
+to exist while its latest usable observation
+is too old.
+
+205
+00:10:10,508 --> 00:10:14,098
+A cold start means that the necessary history
+has not yet accumulated.
+
+206
+00:10:14,221 --> 00:10:18,362
+Invalid units mean the numerical value cannot
+safely be interpreted under the
+
+207
+00:10:18,362 --> 00:10:19,330
+expected contract.
+
+208
+00:10:19,452 --> 00:10:23,838
+The scenario selector makes these states easy
+to inspect, but it is not proof that
+
+209
+00:10:23,838 --> 00:10:27,475
+the application connects to or validates a
+physical glucose monitor.
+
+210
+00:10:27,597 --> 00:10:31,475
+The freshness rule, history requirement, and
+unit checks are engineering choices
+
+211
+00:10:31,475 --> 00:10:32,396
+for this prototype.
+
+212
+00:10:32,518 --> 00:10:36,582
+They need to be documented and tested, and
+they would need a separate review for a
+
+213
+00:10:36,582 --> 00:10:37,970
+future clinical application.
+
+214
+00:10:38,092 --> 00:10:42,379
+A blank or unavailable state must remain
+visibly different from a low estimated
+
+215
+00:10:42,379 --> 00:10:43,030
+event score.
+
+216
+00:10:43,152 --> 00:10:46,564
+The running app is a React and TypeScript
+application built with Vite.
+
+217
+00:10:46,686 --> 00:10:50,904
+Browser inference uses exported synthetic
+logistic coefficients and scaling
+
+218
+00:10:50,904 --> 00:10:51,297
+values.
+
+219
+00:10:51,420 --> 00:10:53,958
+A Python service is not required at runtime.
+
+220
+00:10:54,080 --> 00:10:58,577
+That keeps the demo reproducible without
+accounts, paid APIs, or patient uploads.
+
+221
+00:10:58,700 --> 00:11:03,211
+The offline Python pipeline generates
+synthetic data, makes patient-level splits,
+
+222
+00:11:03,211 --> 00:11:07,221
+fits the scaler and classifier on training
+people, selects thresholds on
+
+223
+00:11:07,221 --> 00:11:09,782
+validation people, and exports versioned JSON.
+
+224
+00:11:09,905 --> 00:11:14,083
+Browser parity fixtures compare the TypeScript
+calculation with Python outputs.
+
+225
+00:11:14,206 --> 00:11:18,822
+The real benchmark uses a separate local
+pipeline and exports aggregate evidence
+
+226
+00:11:18,822 --> 00:11:19,111
+only.
+
+227
+00:11:19,233 --> 00:11:21,331
+A digital-twin claim also needs care here.
+
+228
+00:11:21,453 --> 00:11:25,917
+This prototype updates a virtual patient state
+with simulated sensor observations.
+
+229
+00:11:26,040 --> 00:11:30,308
+It has no physical patient connection, no
+validated physiology simulator, and no
+
+230
+00:11:30,308 --> 00:11:31,695
+autonomous treatment loop.
+
+231
+00:11:31,818 --> 00:11:35,409
+Reproducibility requires more than a
+screenshot of a good result.
+
+232
+00:11:35,531 --> 00:11:39,553
+The repository needs the preprocessing logic,
+the split protocol, the model
+
+233
+00:11:39,553 --> 00:11:43,735
+configuration, the selected thresholds, and
+the exported artifacts used by the
+
+234
+00:11:43,735 --> 00:11:44,272
+interface.
+
+235
+00:11:44,394 --> 00:11:48,026
+The scaler must be fitted on training people
+rather than the entire dataset.
+
+236
+00:11:48,148 --> 00:11:50,850
+Threshold selection belongs on validation
+data.
+
+237
+00:11:50,972 --> 00:11:54,400
+Test results should be reported only after
+those choices have been fixed.
+
+238
+00:11:54,522 --> 00:11:58,622
+Browser parity checks address a different
+question: whether the exported model is
+
+239
+00:11:58,622 --> 00:12:01,051
+evaluated consistently by TypeScript and
+Python.
+
+240
+00:12:01,174 --> 00:12:04,071
+They do not validate the statistical
+assumptions of the model.
+
+241
+00:12:04,193 --> 00:12:08,145
+The architecture keeps runtime inference local
+to the browser for the synthetic
+
+242
+00:12:08,145 --> 00:12:08,845
+demonstration.
+
+243
+00:12:08,968 --> 00:12:13,065
+The separate retrospective benchmark is an
+offline computation that publishes
+
+244
+00:12:13,065 --> 00:12:14,076
+aggregate evidence.
+
+245
+00:12:14,199 --> 00:12:18,579
+No real subject trace is necessary for a
+reviewer to inspect those reported
+
+246
+00:12:18,579 --> 00:12:19,047
+metrics.
+
+247
+00:12:19,169 --> 00:12:23,066
+The term digital twin here describes an
+updating virtual state, with the
+
+248
+00:12:23,066 --> 00:12:24,743
+limitations shown on the slide.
+
+249
+00:12:24,866 --> 00:12:30,523
+The synthetic evaluation includes 240 people,
+split 144 for training, 48 for
+
+250
+00:12:30,523 --> 00:12:32,831
+validation, and 48 for testing.
+
+251
+00:12:32,953 --> 00:12:37,826
+The held-out comparison uses the same 30,248
+eligible windows.
+
+252
+00:12:37,948 --> 00:12:42,763
+PR-AUC here means average precision, not
+trapezoidal area under a plotted curve.
+
+253
+00:12:42,886 --> 00:12:51,292
+Fused PR-AUC is 0.3205 compared with 0.2837
+for dynamic-only, 0.1776 for static-
+
+254
+00:12:51,292 --> 00:12:56,441
+only, and 0.0773 for constant persistence
+scores.
+
+255
+00:12:56,564 --> 00:13:02,513
+The fused patient-bootstrap interval is about
+0.2731 to 0.3581.
+
+256
+00:13:02,636 --> 00:13:06,994
+Those correlated windows are not 30,248
+independent patients.
+
+257
+00:13:07,116 --> 00:13:10,234
+The frozen synthetic threshold is 0.15.
+
+258
+00:13:10,356 --> 00:13:16,526
+It produces 944 false alerts over 336 patient-
+days, about 2.81 per day.
+
+259
+00:13:16,648 --> 00:13:23,483
+It warns 293 of 334 forecastable episodes,
+with median lead time of 30 minutes and
+
+260
+00:13:23,483 --> 00:13:25,650
+window precision of 27.2%.
+
+261
+00:13:25,773 --> 00:13:28,474
+The episode count and alert burden belong
+together.
+
+262
+00:13:28,596 --> 00:13:32,299
+Alert thresholds were selected separately for
+each model, so workload is not
+
+263
+00:13:32,299 --> 00:13:33,371
+matched across models.
+
+264
+00:13:33,493 --> 00:13:37,982
+Average precision summarizes how precision
+changes as a score threshold varies.
+
+265
+00:13:38,104 --> 00:13:41,581
+Its baseline depends strongly on how common
+the positive outcome is.
+
+266
+00:13:41,703 --> 00:13:45,838
+That is why prevalence and the common
+evaluation denominator belong beside the
+
+267
+00:13:45,838 --> 00:13:46,739
+model comparison.
+
+268
+00:13:46,861 --> 00:13:50,297
+Overlapping windows from one person's glucose
+trace are correlated.
+
+269
+00:13:50,420 --> 00:13:54,649
+Treating every window as an independent
+patient would exaggerate the amount of
+
+270
+00:13:54,649 --> 00:13:56,655
+independent information in the study.
+
+271
+00:13:56,777 --> 00:14:00,888
+Resampling whole people is one way to reflect
+this clustering in uncertainty
+
+272
+00:14:00,888 --> 00:14:01,429
+estimates.
+
+273
+00:14:01,551 --> 00:14:04,408
+The alert workload answers another practical
+question.
+
+274
+00:14:04,530 --> 00:14:08,636
+A model may warn many episodes and still
+create too many interruptions for a
+
+275
+00:14:08,636 --> 00:14:09,500
+useful workflow.
+
+276
+00:14:09,623 --> 00:14:13,746
+The cooldown prevents every consecutive
+positive window from being counted as a
+
+277
+00:14:13,746 --> 00:14:16,356
+new alert, but it does not eliminate false
+alerts.
+
+278
+00:14:16,478 --> 00:14:20,033
+Different models can select different
+thresholds on validation data, so an
+
+279
+00:14:20,033 --> 00:14:23,203
+apparent sensitivity advantage may come with a
+different workload.
+
+280
+00:14:23,326 --> 00:14:27,320
+The persistence trajectory comparison is a
+regression comparison and should remain
+
+281
+00:14:27,320 --> 00:14:29,561
+separate from the event classification result.
+
+282
+00:14:29,683 --> 00:14:34,441
+The real feasibility study has 60 training, 20
+validation, and 20 held-out people.
+
+283
+00:14:34,564 --> 00:14:41,093
+There are 20,687 eligible test windows, with
+event prevalence about 9.95%.
+
+284
+00:14:41,215 --> 00:14:47,262
+Fused PR-AUC is 0.3422 and dynamic-only is
+0.3398.
+
+285
+00:14:47,385 --> 00:14:50,225
+The difference is about 0.0024.
+
+286
+00:14:50,347 --> 00:14:57,177
+Its paired patient-bootstrap interval runs
+from about minus 0.00248 to plus
+
+287
+00:14:57,177 --> 00:14:59,545
+0.00758 and includes zero.
+
+288
+00:14:59,667 --> 00:15:02,932
+We have not established a meaningful fusion
+benefit on these data.
+
+289
+00:15:03,054 --> 00:15:10,600
+At the validation-selected threshold of 0.20,
+window precision is 28.9% and recall
+
+290
+00:15:10,600 --> 00:15:11,428
+is 50.5%.
+
+291
+00:15:11,550 --> 00:15:17,687
+The model warns 302 of 326 forecastable
+episodes, with a 45-minute median lead.
+
+292
+00:15:17,810 --> 00:15:23,637
+It also produces 754 false alerts, or about
+2.97 per recorded patient-day.
+
+293
+00:15:23,759 --> 00:15:27,024
+The denominator includes gaps and periods
+already above range.
+
+294
+00:15:27,146 --> 00:15:30,231
+It is recorded-span time, not verified sensor
+uptime.
+
+295
+00:15:30,354 --> 00:15:32,459
+Alerts have a 120-minute cooldown.
+
+296
+00:15:32,582 --> 00:15:36,822
+Episodes and alerts are counted separately,
+and one alert can warn more than one
+
+297
+00:15:36,822 --> 00:15:38,254
+episode inside its horizon.
+
+298
+00:15:38,376 --> 00:15:42,408
+These details explain why event sensitivity
+alone would overstate usefulness.
+
+299
+00:15:42,530 --> 00:15:45,754
+The study is retrospective, small, and
+geographically limited.
+
+300
+00:15:45,876 --> 00:15:47,525
+It cannot validate care in India.
+
+301
+00:15:47,647 --> 00:15:49,761
+The paired interval is especially important.
+
+302
+00:15:49,883 --> 00:15:53,869
+Comparing two separately rounded point
+estimates can make a tiny difference look
+
+303
+00:15:53,869 --> 00:15:55,115
+more decisive than it is.
+
+304
+00:15:55,237 --> 00:15:57,498
+Here the interval for the difference includes
+zero.
+
+305
+00:15:57,620 --> 00:16:01,975
+The reasonable interpretation is that this
+study has not established a meaningful
+
+306
+00:16:01,975 --> 00:16:05,039
+advantage for fusion over dynamic glucose
+features alone.
+
+307
+00:16:05,161 --> 00:16:09,491
+That conclusion is compatible with both models
+having discrimination above the
+
+308
+00:16:09,491 --> 00:16:10,490
+constant baseline.
+
+309
+00:16:10,613 --> 00:16:15,086
+It is also compatible with both being
+unsuitable for clinical use at the measured
+
+310
+00:16:15,086 --> 00:16:15,803
+alert burden.
+
+311
+00:16:15,926 --> 00:16:19,084
+Window recall and episode warning rate are
+different quantities.
+
+312
+00:16:19,207 --> 00:16:23,424
+Many overlapping opportunities may exist
+before one episode, and one alert may
+
+313
+00:16:23,424 --> 00:16:26,127
+cover more than one episode in its future
+horizon.
+
+314
+00:16:26,250 --> 00:16:30,118
+Counting those quantities carefully avoids
+accidental inflation of success.
+
+315
+00:16:30,241 --> 00:16:34,108
+The denominator for false alerts per day
+includes the full recorded span,
+
+316
+00:16:34,108 --> 00:16:36,492
+including gaps, rather than confirmed uptime.
+
+317
+00:16:36,614 --> 00:16:40,717
+The result should therefore be read with that
+exact denominator and not converted
+
+318
+00:16:40,717 --> 00:16:42,997
+into an unsupported sensor reliability claim.
+
+319
+00:16:43,119 --> 00:16:47,288
+Before clinical use, this would need
+independent local validation, verified
+
+320
+00:16:47,288 --> 00:16:51,568
+feature timing, clinician review of the event
+definition and acceptable alert
+
+321
+00:16:51,568 --> 00:16:54,292
+burden, and ethics, privacy, and security
+review.
+
+322
+00:16:54,414 --> 00:16:57,401
+A larger model alone would not resolve those
+questions.
+
+323
+00:16:57,523 --> 00:17:00,209
+The public demo collects no real patient
+records.
+
+324
+00:17:00,331 --> 00:17:03,930
+The real source files remain outside the
+repository and recording.
+
+325
+00:17:04,052 --> 00:17:08,666
+We make no claim of regulatory compliance,
+diagnostic ability, treatment benefit,
+
+326
+00:17:08,666 --> 00:17:09,520
+or safe dosing.
+
+327
+00:17:09,643 --> 00:17:13,832
+The next research question is whether a
+carefully timed and externally tested
+
+328
+00:17:13,832 --> 00:17:17,641
+model can reduce false alerts while retaining
+useful advance warnings.
+
+329
+00:17:17,763 --> 00:17:19,600
+Our present results do not answer that.
+
+330
+00:17:19,722 --> 00:17:23,477
+A credible next step would begin with a
+specified clinical question and a
+
+331
+00:17:23,477 --> 00:17:25,484
+prospective data availability contract.
+
+332
+00:17:25,606 --> 00:17:29,584
+Researchers would need to decide which inputs
+are genuinely available at the
+
+333
+00:17:29,584 --> 00:17:33,510
+forecast time, which population is
+represented, and what actions, if any, a
+
+334
+00:17:33,510 --> 00:17:35,343
+reviewer would take after an alert.
+
+335
+00:17:35,465 --> 00:17:39,440
+They would need to establish acceptable alert
+burden with relevant clinicians
+
+336
+00:17:39,440 --> 00:17:43,415
+rather than selecting a threshold solely
+because it maximizes a retrospective
+
+337
+00:17:43,415 --> 00:17:44,189
+summary metric.
+
+338
+00:17:44,312 --> 00:17:48,817
+Independent local validation matters because a
+small geographically limited source
+
+339
+00:17:48,817 --> 00:17:50,686
+cannot stand in for care in India.
+
+340
+00:17:50,808 --> 00:17:55,021
+Privacy and security review also need to cover
+the actual deployment, access
+
+341
+00:17:55,021 --> 00:17:58,292
+rules, retention policy, and data flows of a
+future system.
+
+342
+00:17:58,414 --> 00:18:02,095
+None of those requirements are satisfied just
+by using a synthetic demo.
+
+343
+00:18:02,217 --> 00:18:06,159
+For this entry, the narrower achievement is a
+working, inspectable research
+
+344
+00:18:06,159 --> 00:18:09,522
+prototype that communicates these limits
+instead of hiding them.
+
+345
+00:18:09,644 --> 00:18:12,721
+Original project code uses the MIT license.
+
+346
+00:18:12,843 --> 00:18:14,900
+Dependencies retain their licenses.
+
+347
+00:18:15,022 --> 00:18:19,973
+The Shanghai dataset and its derived evidence
+retain CC BY 4.0 attribution,
+
+348
+00:18:19,973 --> 00:18:25,121
+including the source DOI and the notice that
+we derived features and aggregate
+
+349
+00:18:25,121 --> 00:18:26,309
+benchmark results.
+
+350
+00:18:26,432 --> 00:18:30,850
+OpenAI assistance contributed substantially to
+planning, interface design,
+
+351
+00:18:30,850 --> 00:18:34,373
+implementation, model evaluation, tests, and
+documentation.
+
+352
+00:18:34,495 --> 00:18:36,201
+That contribution is disclosed.
+
+353
+00:18:36,323 --> 00:18:40,088
+The participant remains responsible for
+reviewing the entry and answering the
+
+354
+00:18:40,088 --> 00:18:42,240
+organizer's authorship questions truthfully.
+
+355
+00:18:42,362 --> 00:18:46,889
+GlucoTwin demonstrates an inspectable
+synthetic replay, working event inference,
+
+356
+00:18:46,889 --> 00:18:50,001
+explicit unavailable states, and reproducible
+evidence.
+
+357
+00:18:50,124 --> 00:18:54,201
+The real benchmark shows a small, uncertain
+fusion difference and a false-alert
+
+358
+00:18:54,201 --> 00:18:56,008
+burden that needs further research.
+
+359
+00:18:56,130 --> 00:19:00,391
+The repository includes the commands and model
+cards needed to examine those
+
+360
+00:19:00,391 --> 00:19:00,839
+results.
+
+361
+00:19:00,962 --> 00:19:04,930
+The source attribution identifies the dataset
+paper and archive, and the
+
+362
+00:19:04,930 --> 00:19:09,174
+modification notice explains that trailing
+statistical features and aggregate
+
+363
+00:19:09,174 --> 00:19:12,592
+benchmark results were derived from the
+original observations.
+
+364
+00:19:12,714 --> 00:19:16,615
+That matters because the project's code
+license does not erase obligations
+
+365
+00:19:16,615 --> 00:19:17,986
+attached to research data.
+
+366
+00:19:18,109 --> 00:19:21,365
+AI assistance is also part of the provenance
+of the entry.
+
+367
+00:19:21,487 --> 00:19:25,462
+It contributed to planning, design,
+implementation, evaluation, tests,
+
+368
+00:19:25,462 --> 00:19:28,073
+documentation, and this narrated presentation.
+
+369
+00:19:28,196 --> 00:19:32,056
+The participant should review these materials
+and answer any organizer questions
+
+370
+00:19:32,056 --> 00:19:32,586
+truthfully.
+
+371
+00:19:32,709 --> 00:19:35,100
+The final takeaway is deliberately balanced.
+
+372
+00:19:35,223 --> 00:19:39,160
+The application demonstrates the intended
+review flow and makes several failure
+
+373
+00:19:39,160 --> 00:19:39,907
+states visible.
+
+374
+00:19:40,030 --> 00:19:42,894
+The synthetic benchmark tests the engineering
+pipeline.
+
+375
+00:19:43,017 --> 00:19:47,385
+The retrospective real benchmark supplies a
+modest feasibility check and reveals
+
+376
+00:19:47,385 --> 00:19:51,480
+substantial false alert workload with
+uncertain incremental fusion benefit.
+
+377
+00:19:51,602 --> 00:19:54,042
+Those are the results the repository supports.
+
+378
+00:19:54,165 --> 00:19:58,803
+This presentation does not claim registration,
+acceptance, clinical validation, or
+
+379
+00:19:58,803 --> 00:19:59,878
+deployment success.

@@ -1,0 +1,21 @@
+GlucoTwin neural narration
+
+Voice: Kokoro stock voice af_heart. This is synthetic narration, not a recording or clone of the participant's voice.
+Base model: hexgrad/Kokoro-82M, v1.0, Apache License 2.0.
+Official model: https://huggingface.co/hexgrad/Kokoro-82M
+Official voice guide: https://huggingface.co/hexgrad/Kokoro-82M/blob/main/VOICES.md
+Official inference implementation: https://github.com/hexgrad/kokoro/tree/main/kokoro.js
+NPM kokoro-js version: 1.2.1.
+Final runtime: native ONNX CPU, 8-bit quantized model, 2 intra-op threads, 1 inter-op thread, no paid API.
+The model author's JavaScript documentation recommends this ONNX conversion:
+https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX
+Downloaded model_quantized.onnx SHA256:
+fbae9257e1e05ffc727e951ef9b9c98418e6d79f1c9b6b13bd59f5c9028a1478
+Stock af_heart.bin SHA256 (kokoro-js package):
+d583ccff3cdca2f7fae535cb998ac07e9fcb90f09737b9a41fa2734ec44a8f0b
+The initially approved intro sample used official full-precision weights with the same stock voice:
+Model SHA256 496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4
+Voice af_heart.pt SHA256 0ab5709b8ffab19bfd849cd11d98f75b60af7733253ad0d67b12382a102cb4ff
+Official model revision f3ff3571791e39611d31c381e3a41a3af07b4987
+
+Implementation note: Generated pronunciation text expands biomedical acronyms and separates 'Gluco Twin'. User-visible captions preserve the original content and meaning. Sentence timestamps are measured from generated waveforms; line boundaries within sentences are approximately allocated by text length.

@@ -6,9 +6,9 @@ A clinician-facing Type 2 diabetes digital-twin research workspace with timestam
 
 Team: **dev**. Author: **J R Deva Dattan**. College: **Army Institute of Technology, Pune**.
 
-Registration is complete for solo Team dev. The repository remains private while the submission package is completed. The presentation and architecture files are grouped in [`dev_Army Institute of Technology/`](dev_Army%20Institute%20of%20Technology/README.md), with canonical copies under `artifacts/submission/`. The actual 20:00 walkthrough, its unlisted YouTube link and final platform submission are still pending.
+Registration is complete for solo Team dev. The repository remains private while the submission package is completed. The presentation and architecture files are grouped in [`dev_Army Institute of Technology/`](dev_Army%20Institute%20of%20Technology/README.md), with canonical copies under `artifacts/submission/`. The final 20:00 walkthrough has been generated with AI narration using the approved stock Heart voice. Its unlisted YouTube link and final platform submission are still pending. See the [video verification summary](docs/submission/VIDEO_QA.md), [transcript](docs/submission/GlucoTwin-transcript.txt) and [captions](docs/submission/GlucoTwin-captions.srt).
 
-The submission form requires a 15–20-minute video, while the public listing specifies at least 20 minutes. The recording target is exactly 20:00; its verified YouTube link will be added here before submission.
+The submission form requires a 15–20-minute video, while the public listing specifies at least 20 minutes. The exported video is exactly 20:00; its verified YouTube link will be added here before submission.
 
 Stack: React 19, TypeScript, Vite, shadcn/ui with Radix primitives, Tailwind CSS, Lucide icons, Python and scikit-learn. The runtime is a static browser app with local inference.
 

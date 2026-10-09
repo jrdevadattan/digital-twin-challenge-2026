@@ -13,3 +13,7 @@ Other dependency licenses are distributed in their installed packages. This noti
 ## Presentation template
 
 The presentation adapts SlidesCarnival’s Dercetus / Minimal Medical template under CC BY 4.0. Its attribution, source and modification details are in [TEMPLATE_ATTRIBUTION.md](submission/TEMPLATE_ATTRIBUTION.md). The MIT license for original GlucoTwin code does not cover this template or its fonts. The unmodified source template is excluded from the repository.
+
+## Neural narration
+
+The final video uses Kokoro-82M v1.0 (Apache License 2.0), stock `af_heart`, through the documented ONNX conversion. [Neural voice credits](submission/NEURAL-VOICE-CREDITS.txt) preserve model, implementation and voice sources and checksums. Narration is synthetic and is not a voice clone. The original-code MIT license does not relicense third-party model weights.
